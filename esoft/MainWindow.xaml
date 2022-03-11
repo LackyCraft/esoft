@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:esoft"
         mc:Ignorable="d"
         Height="450" Width="743"
-        MinHeight="700"
+        MinHeight="800"
         MinWidth="1300">
 
     <Grid>
@@ -27,9 +27,9 @@
                 Click="AuthClick"/>
 
 
-        <Grid x:Name="Menu" Grid.Column="0" Grid.Row="1">
-            <StackPanel Margin="0,15,0,0">
-                <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
+        <Grid x:Name="GridMenu" Grid.Column="0" Grid.Row="1">
+            <StackPanel Margin="0,15,0,0" IsEnabled="False" x:Name="StackPanelMenu">
+                <Button x:Name="ClientInfo" Click="scrolPage"  Content="Личная карточка" Foreground="{StaticResource DarkBlue}"  Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}" FontWeight="Bold"/>
                 <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
                 <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
                 <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>

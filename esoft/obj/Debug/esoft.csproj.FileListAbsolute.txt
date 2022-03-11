@@ -18,3 +18,15 @@ C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\esoft.pdb
 C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\esoft_Content.g.cs
 C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Auth.g.cs
 C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Auth.baml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Register.g.cs
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\RolePage\Admin\AdminWindow.g.cs
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\bin\Debug\EntityFramework.dll
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\bin\Debug\EntityFramework.xml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Register.baml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\RolePage\Admin\AdminWindow.baml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\esoft.csproj.CopyComplete
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\RolePage\Client\UserInfo.g.cs
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\RolePage\Client\UserInfo.baml

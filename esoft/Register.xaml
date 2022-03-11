@@ -4,33 +4,55 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:esoft"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
       Title="Register">
 
-    <Grid Background="White">
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel VerticalAlignment="Bottom">
-                <Image Source="Image/logo.png" Height="80"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                    <TextBlock Text="Введите логин:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                    <TextBox  Width="200" HorizontalAlignment="Right"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                    <TextBlock Text="Введите пароль:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                    <PasswordBox  Width="200" HorizontalAlignment="Right"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                    <TextBlock Text="Фамилию:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                    <TextBox  Width="200" HorizontalAlignment="Right"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Click="clickButtonLogout" x:Name="ButtonLogout" Content="Регистрация" Width="150" Background="{StaticResource LightRed}"/>
-                    <Button Click="clickButtonLogin" x:Name="ButtonLogin" Content="Войти" Width="150"/>
-                </StackPanel>
-
+    <Grid Background="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel VerticalAlignment="Bottom">
+            <Image Source="Image/logo.png" Height="80"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="*Введите логин:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxLogin"  Width="200" HorizontalAlignment="Right"/>
             </StackPanel>
-        </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="*Введите пароль:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <PasswordBox x:Name="PasswordBoxPassword"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="*Повторите пароль:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <PasswordBox x:Name="PasswordBoxDoublePassword"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Введите имя" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxLastName"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Введите фамилию:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxFirstName"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Введите отчество:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxMidlName" Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+            
+            <TextBlock Text="Поля, обозначеные * - являются обязательными к заполнению" HorizontalAlignment="Left" Margin="15,0,0,10" TextWrapping="Wrap" Foreground="{StaticResource DarkGrey3}"/>
+            <TextBlock x:Name="WarningContactItem" FontWeight="Bold" Text="Номер телефона или Email должны быть обязательно заполнены" HorizontalAlignment="Left" Margin="15,0,0,10" TextWrapping="Wrap" Foreground="{StaticResource DarkGrey3}"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Введите номер телефона:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxNumberPhone"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Введите Email:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxEmail"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+            <TextBlock x:Name="TextBlockWarning"  Text="" FontWeight="Bold" TextAlignment="Center" Foreground="{StaticResource Warning}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+            <Button Click="clickButtonRegister" x:Name="ButtonLogin" Content="Зарегистрироваться"/>
+        </StackPanel>
     </Grid>
 </Page>

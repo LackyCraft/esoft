@@ -15,9 +15,16 @@ namespace esoft
     
     public partial class eSoftEntities : DbContext
     {
+        private static eSoftEntities _context;
         public eSoftEntities()
             : base("name=eSoftEntities")
         {
+        }
+        public static eSoftEntities GetContext()
+        {
+            if (_context == null)
+                _context = new eSoftEntities();
+            return _context;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

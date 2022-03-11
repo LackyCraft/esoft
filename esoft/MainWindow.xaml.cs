@@ -39,6 +39,7 @@ namespace esoft
             {
                 clickedButton.Content = "Войти";
                 MainFrame.Content = null;
+                StackPanelMenu.IsEnabled = false;
             }
             else
             {
@@ -46,5 +47,12 @@ namespace esoft
             }
         }
 
+        private void scrolPage(object sender, RoutedEventArgs e)
+        {
+            if(sender == ClientInfo)
+            {
+                MainFrame.NavigationService.Navigate(new Uri("/RolePage/Client/UserInfo.xaml", UriKind.Relative));
+            }
+        }
     }
 }

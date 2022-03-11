@@ -23,23 +23,49 @@ namespace esoft
         public Auth()
         {
             InitializeComponent();
-            foreach (Window window in Application.Current.Windows)
-            {
-                if (window.GetType() == typeof(MainWindow))
-                {
-                    (window as MainWindow).ButtonAuth.Content = "Выход";
-                }
-            }
         }
 
         private void clickButtonLogin(object sender, RoutedEventArgs e)
         {
+            string readLogin = TextBoxLogin.Text;
+            string readPassword = PasswordBoxPassword.Password.ToString();
 
+         
+            var seachUser = eSoftEntities.GetContext().User.Where(i => i.login == readLogin && i.password == readPassword).ToList();
+
+            if (seachUser.Count > 0)
+            {
+                    Application.Current.Resources["idUser"] = seachUser[0].id;
+                    
+                    foreach (Window window in Application.Current.Windows)
+                    {
+                        if (window.GetType() == typeof(MainWindow))
+                        {
+                            (window as MainWindow).ButtonAuth.Content = "Выход";
+                        }
+                    }
+                    
+                    foreach (Window window in Application.Current.Windows)
+                    {
+                        if (window.GetType() == typeof(MainWindow))
+                        {
+                            (window as MainWindow).StackPanelMenu.IsEnabled = true;
+                        }
+                    }
+
+                    this.NavigationService.Navigate(new Uri("/RolePage/Client/UserInfo.xaml", UriKind.Relative), seachUser[0].id);
+
+            }
+            else
+            {
+                MessageBox.Show("Warning 422\n Неверный логин или пароль");
+            }
+            
         }
 
-        private void clickButtonLogout(object sender, RoutedEventArgs e)
+        private void clickButtonRegister(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new Uri("Register.xaml",UriKind.Relative));
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:esoft"
         mc:Ignorable="d"
         
-        Height="450" Width="743"
+        Height="451" Width="743"
         MinHeight="800"
         MinWidth="1300">
 

@@ -15,18 +15,24 @@ namespace esoft
     
     public partial class eSoftEntities : DbContext
     {
+
         private static eSoftEntities _context;
+
         public eSoftEntities()
             : base("name=eSoftEntities")
         {
         }
+
         public static eSoftEntities GetContext()
         {
             if (_context == null)
+            {
                 _context = new eSoftEntities();
+            }
             return _context;
         }
-    
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -37,5 +43,6 @@ namespace esoft
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<ListUsers> ListUsers { get; set; }
     }
 }

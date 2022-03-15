@@ -12,7 +12,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="MidlName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Email" Type="nchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Phone" Type="nchar" MaxLength="12" />
@@ -53,6 +53,24 @@
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleId" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "eSoft.dbo.ListUsers" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ListUsers">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MidlName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nchar" MaxLength="12" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoleId" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <Association Name="FK_Client_UserId">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -96,6 +114,19 @@
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListUsers" EntityType="Self.ListUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ListUsers].[login] AS [login], 
+    [ListUsers].[UserId] AS [UserId], 
+    [ListUsers].[LastName] AS [LastName], 
+    [ListUsers].[FirstName] AS [FirstName], 
+    [ListUsers].[MidlName] AS [MidlName], 
+    [ListUsers].[Phone] AS [Phone], 
+    [ListUsers].[Email] AS [Email], 
+    [ListUsers].[RoleId] AS [RoleId], 
+    [ListUsers].[Role] AS [Role]
+    FROM [dbo].[ListUsers] AS [ListUsers]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Client_UserId" Association="Self.FK_Client_UserId">
             <End Role="User" EntitySet="User" />
             <End Role="Client" EntitySet="Client" />
@@ -121,7 +152,7 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MidlName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
@@ -169,6 +200,22 @@
           <NavigationProperty Name="Realtor" Relationship="Self.FK_Realtor_Realtor_UserId" FromRole="User" ToRole="Realtor" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_RoleId" FromRole="User" ToRole="Role" />
         </EntityType>
+        <EntityType Name="ListUsers">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MidlName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
         <Association Name="FK_Client_UserId">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
@@ -211,6 +258,7 @@
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="ListUsers" EntityType="Self.ListUsers" />
           <AssociationSet Name="FK_Client_UserId" Association="Self.FK_Client_UserId">
             <End Role="User" EntitySet="User" />
             <End Role="Client" EntitySet="Client" />
@@ -281,6 +329,21 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListUsers">
+            <EntityTypeMapping TypeName="eSoftModel.ListUsers">
+              <MappingFragment StoreEntitySet="ListUsers">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MidlName" ColumnName="MidlName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

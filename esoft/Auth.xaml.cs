@@ -53,7 +53,13 @@ namespace esoft
                         }
                     }
 
-                    this.NavigationService.Navigate(new Uri("/RolePage/Client/UserInfo.xaml", UriKind.Relative), seachUser[0].id);
+                if (seachUser[0].RoleId == "A")
+                {
+                    RolePage.Admin.AdminWindow newAdminWindows = new RolePage.Admin.AdminWindow();
+                    newAdminWindows.Show();
+                }
+                else
+                    this.NavigationService.Navigate(new Uri("/RolePage/Client/UserInfo.xaml", UriKind.Relative));
 
             }
             else

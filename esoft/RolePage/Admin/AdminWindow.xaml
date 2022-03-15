@@ -7,6 +7,24 @@
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid IsEnabled="true" AutoGenerateColumns="False" x:Name="dataGridUserList">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="UserId" Binding="{Binding login}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Логин" Binding="{Binding login}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Имя" Binding="{Binding LastName}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Фамилия" Binding="{Binding LastName}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Отчетсво" Binding="{Binding MidleName}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Телефон" Binding="{Binding Phone}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Роль" Binding="{Binding Role1}"/>
+                <DataGridTemplateColumn Width="100" Header="Редактирование">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit" Uid="{Binding UserId}" Width="100" Click="EditUser"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

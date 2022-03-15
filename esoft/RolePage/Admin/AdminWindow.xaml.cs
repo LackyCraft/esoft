@@ -22,6 +22,12 @@ namespace esoft.RolePage.Admin
         public AdminWindow()
         {
             InitializeComponent();
+            dataGridUserList.ItemsSource = eSoftEntities.GetContext().ListUsers.ToList();
+        }
+
+        private void EditUser(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

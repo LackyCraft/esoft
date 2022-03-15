@@ -55,8 +55,7 @@ namespace esoft
 
                 if (seachUser[0].RoleId == "A")
                 {
-                    RolePage.Admin.AdminWindow newAdminWindows = new RolePage.Admin.AdminWindow();
-                    newAdminWindows.Show();
+                    this.NavigationService.Navigate(new Uri("/RolePage/Admin/RemoteUser.xaml", UriKind.Relative));
                 }
                 else
                     this.NavigationService.Navigate(new Uri("/RolePage/Client/UserInfo.xaml", UriKind.Relative));

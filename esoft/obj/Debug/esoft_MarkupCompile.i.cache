@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\App.xaml
-6581477675
+7766702340
 8-66471411
-191552645191
+20-1372879209
 18-1453635799
-Auth.xaml;DictionaryStyle.xaml;MainWindow.xaml;Register.xaml;RolePage\Admin\AdminWindow.xaml;RolePage\Client\UserInfo.xaml;
+Auth.xaml;DictionaryStyle.xaml;MainWindow.xaml;Register.xaml;RolePage\Admin\EditUserWindow.xaml;RolePage\Admin\RemoteUser.xaml;RolePage\Admin\UserInfo.xaml;
 
 False
 

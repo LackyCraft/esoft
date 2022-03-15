@@ -49,10 +49,16 @@ namespace esoft
 
         private void scrolPage(object sender, RoutedEventArgs e)
         {
-            if(sender == ClientInfo)
+            //Так, как навигации внутри фрейма отключена. То при каждом открытии новой вкладке она будет писаться поверх прошлой
+            // Что ведет к утечке памяти. Поэтому при открытии новой вкладки чистим содержимое фрейма
+            MainFrame.Content = null;
+
+            if (sender == ClientInfo)
             {
                 MainFrame.NavigationService.Navigate(new Uri("/RolePage/Client/UserInfo.xaml", UriKind.Relative));
             }
+            if(sender == RemoteNmobles)
+               MainFrame.NavigationService.Navigate(new Uri("/Nmobles/RemoteNmobles.xaml", UriKind.Relative)); 
         }
     }
 }

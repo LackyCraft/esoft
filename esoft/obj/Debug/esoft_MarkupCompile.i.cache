@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\
+I:\esoft\esoft\obj\Debug\
 esoft
 none
 false
 DEBUG;TRACE
-C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\App.xaml
-7766702340
+I:\esoft\esoft\App.xaml
+91593351238
 8-66471411
-20-1372879209
-18-1453635799
-Auth.xaml;DictionaryStyle.xaml;MainWindow.xaml;Register.xaml;RolePage\Admin\EditUserWindow.xaml;RolePage\Admin\RemoteUser.xaml;RolePage\Admin\UserInfo.xaml;
+25-879282204
+18110744412
+Auth.xaml;DictionaryStyle.xaml;MainWindow.xaml;Nmobles\LandList.xaml;Nmobles\RemoteNmobles.xaml;Register.xaml;RolePage\Admin\EditUserWindow.xaml;RolePage\Admin\RemoteUser.xaml;RolePage\Client\UserInfo.xaml;
 
 False
 

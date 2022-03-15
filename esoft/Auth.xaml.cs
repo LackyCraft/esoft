@@ -49,16 +49,33 @@ namespace esoft
                     {
                         if (window.GetType() == typeof(MainWindow))
                         {
-                            (window as MainWindow).StackPanelMenu.IsEnabled = true;
-                        }
+                            (window as MainWindow).ClientInfo.IsEnabled = true;
+                    }
                     }
 
                 if (seachUser[0].RoleId == "A")
                 {
                     this.NavigationService.Navigate(new Uri("/RolePage/Admin/RemoteUser.xaml", UriKind.Relative));
+                    foreach (Window window in Application.Current.Windows)
+                    {
+                        if (window.GetType() == typeof(MainWindow))
+                        {
+                            (window as MainWindow).ClientInfo.IsEnabled = false;
+                            (window as MainWindow).ClientInfo.Background = (Brush)Application.Current.MainWindow.FindResource("Grey");
+                        }
+                    }
                 }
                 else
+                {
                     this.NavigationService.Navigate(new Uri("/RolePage/Client/UserInfo.xaml", UriKind.Relative));
+                    foreach (Window window in Application.Current.Windows)
+                    {
+                        if (window.GetType() == typeof(MainWindow))
+                        {
+                            (window as MainWindow).ClientInfo.Foreground = (Brush)Application.Current.MainWindow.FindResource("DarkBlue");
+                        }
+                    }
+                }
 
             }
             else

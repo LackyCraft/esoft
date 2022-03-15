@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:esoft.RolePage.Client"
       mc:Ignorable="d" 
+      Height="750"
       Title="UserInfo">
 
     <Grid HorizontalAlignment="Right" Background="{StaticResource Grey}">
@@ -12,12 +13,12 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="406" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="682"  Width="348" Margin="0,9">
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="348" Margin="0,9">
             <Image Source="/Image/logo.png" Height="80"/>
             <TextBlock x:Name="TextBlockLabel" Text="Карточка клиента" TextAlignment="Center" FontWeight="Bold" FontSize="22" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,15">
                 <TextBlock Text="Логин*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <TextBox x:Name="TextBoxLogin"  Width="200" HorizontalAlignment="Right"/>
+                <TextBox x:Name="TextBoxLogin"  Width="200" HorizontalAlignment="Right"  IsEnabled="False" Background="{StaticResource Grey}"/>
             </StackPanel>
 
 
@@ -57,8 +58,9 @@
                 <TextBlock Text="Введите новый пароль:" VerticalAlignment="Center" Margin="0,0,15,0"/>
                 <PasswordBox x:Name="PasswordBoxNewPassword"  Width="200" HorizontalAlignment="Right"/>
             </StackPanel>
-
-            <Button Content="Сохранить изменения"/>
+            
+            <TextBlock x:Name="TextBlockWarning"  Text="" FontWeight="Bold" TextAlignment="Center" Foreground="{StaticResource Warning}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+            <Button Content="Сохранить изменения" Click="SaveEditUser"/>
 
 
         </StackPanel>

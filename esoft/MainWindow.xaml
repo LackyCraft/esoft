@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:esoft"
         mc:Ignorable="d"
+        Title="Esoft"
+        Icon="Image/logo.png"
         
         Height="450" Width="743"
         MinHeight="800"
@@ -29,9 +31,9 @@
 
 
         <Grid x:Name="GridMenu" Grid.Column="0" Grid.Row="1">
-            <StackPanel Margin="0,15,0,0" IsEnabled="False" x:Name="StackPanelMenu">
-                <Button x:Name="ClientInfo" Click="scrolPage"  Content="Личная карточка" Foreground="{StaticResource DarkBlue}"  Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}" FontWeight="Bold"/>
-                <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
+            <StackPanel Margin="0,15,0,0" IsEnabled="True" x:Name="StackPanelMenu">
+                <Button x:Name="ClientInfo" Click="scrolPage"  Content="Личная карточка" Foreground="{StaticResource LightGrey}"  Background="{StaticResource Grey}" FontWeight="Bold" IsEnabled="False"/>
+                <Button x:Name="RemoteNmobles" Click="scrolPage" Content="Управление недвижимостью" Foreground="{StaticResource DarkBlue}"  Background="{StaticResource Grey}" FontWeight="Bold"/>
                 <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
                 <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
                 <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>

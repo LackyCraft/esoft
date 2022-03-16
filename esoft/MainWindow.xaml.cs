@@ -68,6 +68,8 @@ namespace esoft
                 MainFrame.NavigationService.Navigate(new Uri("/Nmobles/RemoteNmobles.xaml", UriKind.Relative));
                 (sender as Button).Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey1");
             }
+            if(sender == ButtonRegister)
+                MainFrame.NavigationService.Navigate(new Uri("Register.xaml", UriKind.Relative));
         }
     }
 }

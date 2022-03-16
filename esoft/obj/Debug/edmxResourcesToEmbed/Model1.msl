@@ -1,6 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище eSoftModelContainer" CdmEntityContainer="eSoftEntities">
+    <EntitySetMapping Name="Apartmens">
+      <EntityTypeMapping TypeName="eSoftModel.Apartmens">
+        <MappingFragment StoreEntitySet="Apartmens">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ObjectNmoblesId" ColumnName="ObjectNmoblesId" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="CountRooms" ColumnName="CountRooms" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="eSoftModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Client">
       <EntityTypeMapping TypeName="eSoftModel.Client">
         <MappingFragment StoreEntitySet="Client">
@@ -11,6 +31,41 @@
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Houses">
+      <EntityTypeMapping TypeName="eSoftModel.Houses">
+        <MappingFragment StoreEntitySet="Houses">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ObjectNmoblesId" ColumnName="ObjectNmoblesId" />
+          <ScalarProperty Name="CountFloor" ColumnName="CountFloor" />
+          <ScalarProperty Name="CountRoom" ColumnName="CountRoom" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Land">
+      <EntityTypeMapping TypeName="eSoftModel.Land">
+        <MappingFragment StoreEntitySet="Land">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ObjectNmoblesId" ColumnName="ObjectNmoblesId" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObjectNmobles">
+      <EntityTypeMapping TypeName="eSoftModel.ObjectNmobles">
+        <MappingFragment StoreEntitySet="ObjectNmobles">
+          <ScalarProperty Name="ObjectNmoblesId" ColumnName="ObjectNmoblesId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="AddressStreet" ColumnName="AddressStreet" />
+          <ScalarProperty Name="AddressHouse" ColumnName="AddressHouse" />
+          <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+          <ScalarProperty Name="idCity" ColumnName="idCity" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -42,6 +97,14 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeObjectNmobles">
+      <EntityTypeMapping TypeName="eSoftModel.TypeObjectNmobles">
+        <MappingFragment StoreEntitySet="TypeObjectNmobles">
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

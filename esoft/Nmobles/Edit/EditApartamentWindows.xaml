@@ -1,0 +1,65 @@
+﻿<Window x:Class="esoft.Nmobles.Edit.EditApartamentWindows"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:esoft.Nmobles.Edit"
+        mc:Ignorable="d"
+        Height="800" Width="400">
+    
+    <Grid Background="White">
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15">
+            <Image Source="/Image/logo.png" Height="80"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,15">
+                <TextBlock Text="Наименование*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxTitle" Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Город:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <ComboBox x:Name="ComboBoxCity" DisplayMemberPath="CityName" SelectedValuePath="CityId" Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Улица:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxStreet"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Дом:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxHouses"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock  Text="Этаж:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxFloor" Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Кол-во. комнат:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxCountRooms"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Площадь:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxArea"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,17,0,15">
+                <TextBlock Text="Широта:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxLat"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Долгота:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxLng"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <TextBlock x:Name="TextBlockWarning"  Text="" FontWeight="Bold" TextAlignment="Center" Foreground="{StaticResource Warning}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+            <Button Content="Сохранить изменения" Click="Save"/>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

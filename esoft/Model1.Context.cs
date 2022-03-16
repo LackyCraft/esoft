@@ -12,7 +12,7 @@ namespace esoft
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class eSoftEntities : DbContext
     {
 
@@ -32,16 +32,21 @@ namespace esoft
             return _context;
         }
 
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Apartmens> Apartmens { get; set; }
+        public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Houses> Houses { get; set; }
+        public virtual DbSet<Land> Land { get; set; }
+        public virtual DbSet<ObjectNmobles> ObjectNmobles { get; set; }
         public virtual DbSet<Realtor> Realtor { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TypeObjectNmobles> TypeObjectNmobles { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<ListUsers> ListUsers { get; set; }
     }

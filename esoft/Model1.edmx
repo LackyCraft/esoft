@@ -5,6 +5,24 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище eSoftModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Apartmens">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="ObjectNmoblesId" Type="int" />
+          <Property Name="Floor" Type="int" />
+          <Property Name="CountRooms" Type="int" />
+          <Property Name="Area" Type="float" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="Id" />
@@ -16,6 +34,38 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Phone" Type="nchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="Houses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="ObjectNmoblesId" Type="int" />
+          <Property Name="CountFloor" Type="int" />
+          <Property Name="CountRoom" Type="int" />
+          <Property Name="Area" Type="float" />
+        </EntityType>
+        <EntityType Name="Land">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectNmoblesId" Type="int" Nullable="false" />
+          <Property Name="Area" Type="float" />
+        </EntityType>
+        <EntityType Name="ObjectNmobles">
+          <Key>
+            <PropertyRef Name="ObjectNmoblesId" />
+          </Key>
+          <Property Name="ObjectNmoblesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lng" Type="float" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="TypeId" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AddressStreet" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressHouse" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="idCity" Type="int" />
         </EntityType>
         <EntityType Name="Realtor">
           <Key>
@@ -45,6 +95,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TypeObjectNmobles">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
@@ -72,6 +129,18 @@
           <Property Name="RoleId" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Role" Type="nvarchar" MaxLength="30" />
         </EntityType>
+        <Association Name="FK_Apartmens_ObjectNmobles">
+          <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="1" />
+          <End Role="Land" Type="Self.Land" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjectNmobles">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Principal>
+            <Dependent Role="Land">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Client_UserId">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
@@ -81,6 +150,54 @@
             </Principal>
             <Dependent Role="Client">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Houses_Houses_Object">
+          <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="0..1" />
+          <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjectNmobles">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Principal>
+            <Dependent Role="Houses">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Land_ObjectNmobles">
+          <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="0..1" />
+          <End Role="Apartmens" Type="Self.Apartmens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjectNmobles">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Principal>
+            <Dependent Role="Apartmens">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ObjectNmobles_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="ObjectNmobles">
+              <PropertyRef Name="idCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ObjectNmobles_TypeObjectNmobles">
+          <End Role="TypeObjectNmobles" Type="Self.TypeObjectNmobles" Multiplicity="1" />
+          <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeObjectNmobles">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="ObjectNmobles">
+              <PropertyRef Name="TypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -109,10 +226,16 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище eSoftModelContainer">
+          <EntitySet Name="Apartmens" EntityType="Self.Apartmens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Houses" EntityType="Self.Houses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Land" EntityType="Self.Land" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ObjectNmobles" EntityType="Self.ObjectNmobles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Realtor" EntityType="Self.Realtor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeObjectNmobles" EntityType="Self.TypeObjectNmobles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ListUsers" EntityType="Self.ListUsers" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -127,9 +250,29 @@
     [ListUsers].[Role] AS [Role]
     FROM [dbo].[ListUsers] AS [ListUsers]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_Apartmens_ObjectNmobles" Association="Self.FK_Apartmens_ObjectNmobles">
+            <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
+            <End Role="Land" EntitySet="Land" />
+          </AssociationSet>
           <AssociationSet Name="FK_Client_UserId" Association="Self.FK_Client_UserId">
             <End Role="User" EntitySet="User" />
             <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Houses_Houses_Object" Association="Self.FK_Houses_Houses_Object">
+            <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
+            <End Role="Houses" EntitySet="Houses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Land_ObjectNmobles" Association="Self.FK_Land_ObjectNmobles">
+            <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
+            <End Role="Apartmens" EntitySet="Apartmens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ObjectNmobles_City" Association="Self.FK_ObjectNmobles_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ObjectNmobles_TypeObjectNmobles" Association="Self.FK_ObjectNmobles_TypeObjectNmobles">
+            <End Role="TypeObjectNmobles" EntitySet="TypeObjectNmobles" />
+            <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
           </AssociationSet>
           <AssociationSet Name="FK_Realtor_Realtor_UserId" Association="Self.FK_Realtor_Realtor_UserId">
             <End Role="User" EntitySet="User" />
@@ -145,6 +288,26 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="eSoftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Apartmens">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ObjectNmoblesId" Type="Int32" />
+          <Property Name="Floor" Type="Int32" />
+          <Property Name="CountRooms" Type="Int32" />
+          <Property Name="Area" Type="Double" />
+          <NavigationProperty Name="ObjectNmobles" Relationship="Self.FK_Land_ObjectNmobles" FromRole="Apartmens" ToRole="ObjectNmobles" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ObjectNmobles" Relationship="Self.FK_ObjectNmobles_City" FromRole="City" ToRole="ObjectNmobles" />
+        </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="Id" />
@@ -157,6 +320,45 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="User" Relationship="Self.FK_Client_UserId" FromRole="Client" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Houses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ObjectNmoblesId" Type="Int32" />
+          <Property Name="CountFloor" Type="Int32" />
+          <Property Name="CountRoom" Type="Int32" />
+          <Property Name="Area" Type="Double" />
+          <NavigationProperty Name="ObjectNmobles" Relationship="Self.FK_Houses_Houses_Object" FromRole="Houses" ToRole="ObjectNmobles" />
+        </EntityType>
+        <EntityType Name="Land">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectNmoblesId" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="Double" />
+          <NavigationProperty Name="ObjectNmobles" Relationship="Self.FK_Apartmens_ObjectNmobles" FromRole="Land" ToRole="ObjectNmobles" />
+        </EntityType>
+        <EntityType Name="ObjectNmobles">
+          <Key>
+            <PropertyRef Name="ObjectNmoblesId" />
+          </Key>
+          <Property Name="ObjectNmoblesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lng" Type="Double" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="TypeId" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AddressStreet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressHouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idCity" Type="Int32" />
+          <NavigationProperty Name="Apartmens" Relationship="Self.FK_Land_ObjectNmobles" FromRole="ObjectNmobles" ToRole="Apartmens" />
+          <NavigationProperty Name="City" Relationship="Self.FK_ObjectNmobles_City" FromRole="ObjectNmobles" ToRole="City" />
+          <NavigationProperty Name="Houses" Relationship="Self.FK_Houses_Houses_Object" FromRole="ObjectNmobles" ToRole="Houses" />
+          <NavigationProperty Name="Land" Relationship="Self.FK_Apartmens_ObjectNmobles" FromRole="ObjectNmobles" ToRole="Land" />
+          <NavigationProperty Name="TypeObjectNmobles" Relationship="Self.FK_ObjectNmobles_TypeObjectNmobles" FromRole="ObjectNmobles" ToRole="TypeObjectNmobles" />
         </EntityType>
         <EntityType Name="Realtor">
           <Key>
@@ -188,6 +390,14 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="TypeObjectNmobles">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ObjectNmobles" Relationship="Self.FK_ObjectNmobles_TypeObjectNmobles" FromRole="TypeObjectNmobles" ToRole="ObjectNmobles" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
@@ -216,6 +426,30 @@
           <Property Name="RoleId" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Role" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_Land_ObjectNmobles">
+          <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="0..1" />
+          <End Role="Apartmens" Type="Self.Apartmens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjectNmobles">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Principal>
+            <Dependent Role="Apartmens">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ObjectNmobles_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="ObjectNmobles">
+              <PropertyRef Name="idCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Client_UserId">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
@@ -225,6 +459,42 @@
             </Principal>
             <Dependent Role="Client">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Houses_Houses_Object">
+          <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="0..1" />
+          <End Role="Houses" Type="Self.Houses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjectNmobles">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Principal>
+            <Dependent Role="Houses">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apartmens_ObjectNmobles">
+          <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="1" />
+          <End Role="Land" Type="Self.Land" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjectNmobles">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Principal>
+            <Dependent Role="Land">
+              <PropertyRef Name="ObjectNmoblesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ObjectNmobles_TypeObjectNmobles">
+          <End Role="TypeObjectNmobles" Type="Self.TypeObjectNmobles" Multiplicity="1" />
+          <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeObjectNmobles">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="ObjectNmobles">
+              <PropertyRef Name="TypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -253,15 +523,41 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="eSoftEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apartmens" EntityType="Self.Apartmens" />
+          <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Houses" EntityType="Self.Houses" />
+          <EntitySet Name="Land" EntityType="Self.Land" />
+          <EntitySet Name="ObjectNmobles" EntityType="Self.ObjectNmobles" />
           <EntitySet Name="Realtor" EntityType="Self.Realtor" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeObjectNmobles" EntityType="Self.TypeObjectNmobles" />
           <EntitySet Name="User" EntityType="Self.User" />
           <EntitySet Name="ListUsers" EntityType="Self.ListUsers" />
+          <AssociationSet Name="FK_Land_ObjectNmobles" Association="Self.FK_Land_ObjectNmobles">
+            <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
+            <End Role="Apartmens" EntitySet="Apartmens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ObjectNmobles_City" Association="Self.FK_ObjectNmobles_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
+          </AssociationSet>
           <AssociationSet Name="FK_Client_UserId" Association="Self.FK_Client_UserId">
             <End Role="User" EntitySet="User" />
             <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Houses_Houses_Object" Association="Self.FK_Houses_Houses_Object">
+            <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
+            <End Role="Houses" EntitySet="Houses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apartmens_ObjectNmobles" Association="Self.FK_Apartmens_ObjectNmobles">
+            <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
+            <End Role="Land" EntitySet="Land" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ObjectNmobles_TypeObjectNmobles" Association="Self.FK_ObjectNmobles_TypeObjectNmobles">
+            <End Role="TypeObjectNmobles" EntitySet="TypeObjectNmobles" />
+            <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
           </AssociationSet>
           <AssociationSet Name="FK_Realtor_Realtor_UserId" Association="Self.FK_Realtor_Realtor_UserId">
             <End Role="User" EntitySet="User" />
@@ -278,6 +574,26 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище eSoftModelContainer" CdmEntityContainer="eSoftEntities">
+          <EntitySetMapping Name="Apartmens">
+            <EntityTypeMapping TypeName="eSoftModel.Apartmens">
+              <MappingFragment StoreEntitySet="Apartmens">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ObjectNmoblesId" ColumnName="ObjectNmoblesId" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="CountRooms" ColumnName="CountRooms" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="eSoftModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="eSoftModel.Client">
               <MappingFragment StoreEntitySet="Client">
@@ -288,6 +604,41 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Houses">
+            <EntityTypeMapping TypeName="eSoftModel.Houses">
+              <MappingFragment StoreEntitySet="Houses">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ObjectNmoblesId" ColumnName="ObjectNmoblesId" />
+                <ScalarProperty Name="CountFloor" ColumnName="CountFloor" />
+                <ScalarProperty Name="CountRoom" ColumnName="CountRoom" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Land">
+            <EntityTypeMapping TypeName="eSoftModel.Land">
+              <MappingFragment StoreEntitySet="Land">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ObjectNmoblesId" ColumnName="ObjectNmoblesId" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObjectNmobles">
+            <EntityTypeMapping TypeName="eSoftModel.ObjectNmobles">
+              <MappingFragment StoreEntitySet="ObjectNmobles">
+                <ScalarProperty Name="ObjectNmoblesId" ColumnName="ObjectNmoblesId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="AddressStreet" ColumnName="AddressStreet" />
+                <ScalarProperty Name="AddressHouse" ColumnName="AddressHouse" />
+                <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+                <ScalarProperty Name="idCity" ColumnName="idCity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -319,6 +670,14 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeObjectNmobles">
+            <EntityTypeMapping TypeName="eSoftModel.TypeObjectNmobles">
+              <MappingFragment StoreEntitySet="TypeObjectNmobles">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

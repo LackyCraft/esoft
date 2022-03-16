@@ -68,3 +68,13 @@ I:\esoft\esoft\obj\Debug\RolePage\Client\UserInfo.g.cs
 I:\esoft\esoft\obj\Debug\RolePage\Client\UserInfo.baml
 I:\esoft\esoft\obj\Debug\Nmobles\RemoteNmobles.g.cs
 I:\esoft\esoft\obj\Debug\Nmobles\RemoteNmobles.baml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\LandList.g.cs
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\RemoteNmobles.g.cs
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\LandList.baml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\RemoteNmobles.baml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\ApartamentsList.g.cs
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Houses.g.cs
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\ApartamentsList.baml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Houses.baml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Edit\EditApartamentWindows.g.cs
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Edit\EditApartamentWindows.baml

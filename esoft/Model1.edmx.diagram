@@ -4,14 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9d30e37d58f0441cbcfb4903c349b732" Name="Diagram1">
-        <EntityTypeShape EntityType="eSoftModel.Client" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="eSoftModel.Realtor" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="eSoftModel.Role" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="eSoftModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="eSoftModel.User" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="eSoftModel.ListUsers" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="f191a93877ce43449554f16985ee739b" Name="Diagram1">
+        <EntityTypeShape EntityType="eSoftModel.Apartmens" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.City" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.Client" Width="1.5" PointX="12.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.Houses" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.Land" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.ObjectNmobles" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.Realtor" Width="1.5" PointX="12.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.Role" Width="1.5" PointX="7.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.TypeObjectNmobles" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.User" Width="1.5" PointX="10" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eSoftModel.ListUsers" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="eSoftModel.FK_Land_ObjectNmobles" ManuallyRouted="false" />
+        <AssociationConnector Association="eSoftModel.FK_ObjectNmobles_City" ManuallyRouted="false" />
         <AssociationConnector Association="eSoftModel.FK_Client_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="eSoftModel.FK_Houses_Houses_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="eSoftModel.FK_Apartmens_ObjectNmobles" ManuallyRouted="false" />
+        <AssociationConnector Association="eSoftModel.FK_ObjectNmobles_TypeObjectNmobles" ManuallyRouted="false" />
         <AssociationConnector Association="eSoftModel.FK_Realtor_Realtor_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="eSoftModel.FK_User_RoleId" ManuallyRouted="false" />
       </Diagram>

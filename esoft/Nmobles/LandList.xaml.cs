@@ -23,6 +23,17 @@ namespace esoft.Nmobles
         public LandList()
         {
             InitializeComponent();
+            DataGridLands.ItemsSource = eSoftEntities.GetContext().Land.ToList();
+        }
+
+        private void DeletedAt(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Edit(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

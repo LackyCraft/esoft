@@ -4,18 +4,20 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:esoft.Nmobles"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
       Title="LandList">
 
     <Grid>
-        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="dataGridUserList" Grid.Row="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="DataGridLands" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="2">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Наименование недвижимости" Binding="{Binding ObjectNmobles.Title}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Город" Binding="{Binding ObjectNmobles.City.CityName}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Адресс улицы" Binding="{Binding ObjectNmobles.AddressStreet}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Номер дома" Binding="{Binding ObjectNmobles.AddressHouse}"/>
-                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Квартира" Binding="{Binding ObjectNmobles.AddressNumber}"/>
 
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Площадь" Binding="{Binding Area}"/>
                 
@@ -25,14 +27,14 @@
                 <DataGridTemplateColumn Width="100" Header="Редактирование">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Edit" Uid="{Binding UserId}" Width="100" Click="EditUser"/>
+                            <Button Content="Редактировать" Uid="{Binding UserId}" Width="100" Click="Edit"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="100" Header="Удаление">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Edit" Uid="{Binding id}" Width="100" Click="EditUser" Background="{StaticResource LightRed}"/>
+                            <Button Content="Удалить" Uid="{Binding id}" Width="100" Click="DeletedAt" Background="{StaticResource LightRed}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

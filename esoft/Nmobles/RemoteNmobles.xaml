@@ -19,9 +19,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Click="ScrolPage" x:Name="Apartaments" Content="Квартиры" Background="{StaticResource DarkGrey1}" Margin="15,0,15,0"/>
-            <Button Click="ScrolPage" x:Name="House" Content="Дома" Grid.Column="1" Background="{StaticResource DarkGrey1}" Margin="15,0,15,0"/>
-            <Button Click="ScrolPage" x:Name="Land" Content="Земля" Grid.Column="2" Background="{StaticResource DarkGrey1}" Margin="15,0,15,0"/>
+            <Button Click="ScrolPage" x:Name="ButtonGoApartaments" Content="Квартиры" Background="{StaticResource DarkGrey1}" Margin="15,0,15,0"/>
+            <Button Click="ScrolPage" x:Name="ButtonGoHouse" Content="Дома" Grid.Column="1" Background="{StaticResource DarkGrey1}" Margin="15,0,15,0"/>
+            <Button Click="ScrolPage" x:Name="ButtonGoLand" Content="Земля" Grid.Column="2" Background="{StaticResource DarkGrey1}" Margin="15,0,15,0"/>
         </Grid>
 
         <Grid Grid.Row="1">

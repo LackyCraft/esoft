@@ -68,5 +68,14 @@ namespace esoft.Properties {
                 return ResourceManager.GetString("idUser", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на null.
+        /// </summary>
+        internal static string Role {
+            get {
+                return ResourceManager.GetString("Role", resourceCulture);
+            }
+        }
     }
 }

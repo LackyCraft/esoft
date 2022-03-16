@@ -120,4 +120,7 @@
   <data name="idUser" xml:space="preserve">
     <value>null</value>
   </data>
+  <data name="Role" xml:space="preserve">
+    <value>null</value>
+  </data>
 </root>

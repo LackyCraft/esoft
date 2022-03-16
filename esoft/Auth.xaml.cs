@@ -36,7 +36,8 @@ namespace esoft
             if (seachUser.Count > 0)
             {
                     Application.Current.Resources["idUser"] = seachUser[0].id;
-                    
+                    Application.Current.Resources["Role"] = seachUser[0].RoleId;
+
                     foreach (Window window in Application.Current.Windows)
                     {
                         if (window.GetType() == typeof(MainWindow))

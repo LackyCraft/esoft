@@ -130,8 +130,14 @@
     <Compile Include="Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="RolePage\Admin\addUser.xaml.cs">
+      <DependentUpon>addUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RolePage\Admin\EditUserWindow.xaml.cs">
       <DependentUpon>EditUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RolePage\Admin\RegisterRieltor.xaml.cs">
+      <DependentUpon>RegisterRieltor.xaml</DependentUpon>
     </Compile>
     <Compile Include="RolePage\Admin\RemoteUser.xaml.cs">
       <DependentUpon>RemoteUser.xaml</DependentUpon>
@@ -203,7 +209,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RolePage\Admin\addUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RolePage\Admin\EditUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RolePage\Admin\RegisterRieltor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

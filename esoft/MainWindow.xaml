@@ -15,32 +15,40 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="265*"/>
+            <ColumnDefinition Width="350"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="{StaticResource LightGrey}" Grid.ColumnSpan="2"></Grid>
+        <Grid Grid.Row="0" Background="{StaticResource LightGrey}" Grid.ColumnSpan="3"></Grid>
         <Image Source="Image/logo.png" HorizontalAlignment="Left" Margin="15,0,0,0" Grid.Row="0" Grid.Column="0"/>
-        <Button x:Name="ButtonAuth" Content="Вход" x:FieldModifier="public"
-                Grid.Row="0" Grid.Column="1" Margin="0,0,15,0"
-                HorizontalAlignment="Right" VerticalAlignment="Center" Width="233" Height="50"
-                Click="AuthClick"/>
-
+        <Grid Grid.Row="0" Grid.Column="2" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="ButtonRegister" Content="Регистрация"
+                 Margin="0,5,15,5" Background="{StaticResource LightRed}"
+                 VerticalAlignment="Center" Height="50"
+                Click="ButtonAuth" Width="150"/>
+                <Button x:Name="Horizontal"  Content="Вход"
+                 Margin="0,5,15,5"
+                 VerticalAlignment="Center" Height="50"
+                Click="AuthClick" Width="150"/>
+        </StackPanel>
+        </Grid>
 
         <Grid x:Name="GridMenu" Grid.Column="0" Grid.Row="1">
             <StackPanel Margin="0,15,0,0" IsEnabled="True" x:Name="StackPanelMenu">
-                <Button x:Name="ClientInfo" Click="scrolPage"  Content="Личная карточка" Foreground="{StaticResource LightGrey}"  Background="{StaticResource Grey}" FontWeight="Bold" IsEnabled="False"/>
-                <Button x:Name="RemoteNmobles" Click="scrolPage" Content="Управление недвижимостью" Foreground="{StaticResource DarkBlue}"  Background="{StaticResource Grey}" FontWeight="Bold"/>
-                <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
+                <Button x:Name="ClientInfo" Click="scrolPage"  Content="Личная карточка" Foreground="{StaticResource DarkGrey}"  Background="{StaticResource Grey}" FontWeight="Bold" IsEnabled="False"/>
+                <Button x:Name="RemoteNmobles" Click="scrolPage" Content="Управление недвижимостью" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold"/>
+                <Button x:Name="Store" Click="scrolPage"  Content="Продажи" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold"/>
                 <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
                 <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="MainGrid" Grid.Column="1" Grid.Row="1">
+        <Grid x:Name="MainGrid" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
             <Frame NavigationUIVisibility="Hidden"  x:Name="MainFrame" Navigated="MainFrame_Navigated">
 
             </Frame>

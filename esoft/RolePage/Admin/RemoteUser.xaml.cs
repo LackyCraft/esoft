@@ -34,9 +34,7 @@ namespace esoft.RolePage.Admin
             Button selectButton = sender as Button;
             int UserId = int.Parse(selectButton.Uid);
             User seachUser = eSoftEntities.GetContext().User.Where(i => i.id == UserId).ToList()[0];
-            //MessageBox.Show(seachUser);
             EditUserWindow editWindowsUser = new EditUserWindow(seachUser);
-            //this.NavigationService.Navigate(editPageUser);
             editWindowsUser.Show();
 
 
@@ -53,5 +51,10 @@ namespace esoft.RolePage.Admin
             dataGridUserList.ItemsSource = filterUserList;
         }
 
+        private void clickAddUser(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("/RolePage/Admin/addUser.xaml", UriKind.Relative));
+        }
+        
     }
 }

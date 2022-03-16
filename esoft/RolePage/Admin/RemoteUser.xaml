@@ -19,13 +19,11 @@
 
         <Grid Grid.Row="1" Background="White">
             <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Поиск: " FontSize="18" VerticalAlignment="Center" TextAlignment="Center" Margin="15,15,0,0"/>
-                    <TextBox x:Name="TextBoxSearchBox" Width="170" HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Center"/>
-                </StackPanel>
-                <Button Width="150" Content="Поиск" Margin="15,15,0,0" Click="ButtClickButtonSearcon_Click"/>
-                <StackPanel Orientation="Horizontal"/>
+                <TextBlock Text="Поиск: " FontSize="18" VerticalAlignment="Center" TextAlignment="Center" Margin="15,15,0,0"/>
+                <TextBox x:Name="TextBoxSearchBox" Width="170" HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Center"/>
+                <Button Width="150" Content="Поиск" Margin="15,15,0,0" Click="ButtClickButtonSearcon_Click" Background="{StaticResource Grey}" Foreground="{StaticResource DarkBlue}"/>
             </StackPanel>
+            <Button Width="150" Content="Добавить пользователя" Margin="15,15,15,0" Click="clickAddUser" HorizontalAlignment="Right"/>
         </Grid>
 
         <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="dataGridUserList" Grid.Row="2">

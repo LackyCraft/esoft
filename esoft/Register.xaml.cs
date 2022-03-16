@@ -47,9 +47,14 @@ namespace esoft
                 MessageBox.Show("Error 422\n Пароль должен содержать не меньше 6 символов");
                 PasswordBoxPassword.Background = (Brush)Application.Current.MainWindow.FindResource("Warning");
             }
-            if(PasswordBoxPassword.Password.ToString() != PasswordBoxDoublePassword.Password.ToString())
+            if (!(TextBoxLogin.Text.Length > 0))
             {
-                messageWarning = "Пароли не совпадают";
+                messageWarning = "Логин - обязателен для заполнения";
+                TextBoxLogin.Background = (Brush)Application.Current.MainWindow.FindResource("Warning");
+            }
+            if (PasswordBoxPassword.Password.ToString() != PasswordBoxDoublePassword.Password.ToString())
+            {
+                messageWarning += "\nПароли не совпадают";
                 PasswordBoxPassword.Background = (Brush)Application.Current.MainWindow.FindResource("Warning");
                 PasswordBoxDoublePassword.Background = (Brush)Application.Current.MainWindow.FindResource("Warning");
             }
@@ -123,9 +128,14 @@ namespace esoft
                 eSoftEntities.GetContext().Client.Add(newClient);
                 eSoftEntities.GetContext().SaveChanges();
 
-                MessageBox.Show("Вы были успешно зарегестрированы");
+                MessageBox.Show("Регистрация прошла успешно");
 
-                this.NavigationService.Navigate(new Uri("Auth.xaml", UriKind.Relative));
+                if (Application.Current.Resources["Role"].ToString() == "A")
+                {
+                    this.NavigationService.Navigate(new Uri("/RolePage/Admin/RemoteUser.xaml", UriKind.Relative));
+                }
+                else
+                    this.NavigationService.Navigate(new Uri("Auth.xaml", UriKind.Relative));
 
             }
         }

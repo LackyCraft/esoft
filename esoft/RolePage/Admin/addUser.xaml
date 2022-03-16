@@ -1,0 +1,19 @@
+﻿<Page x:Class="esoft.RolePage.Admin.addUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:esoft.RolePage.Admin"
+      mc:Ignorable="d"
+      Title="addUser">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button Height="Auto" Background="{StaticResource LightGrey}"/>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Добавление нового пользователя "  FontSize="18" FontWeight="Bold" TextAlignment="Center"></TextBlock>
+            <TextBlock Text="Выберите роль" Foreground="{StaticResource DarkBlue}" FontWeight="Bold" TextAlignment="Center"></TextBlock>
+            <Button Content="Риелтор" Click="clickScrol" x:Name="Rieltor"/>
+            <Button Content="Клиент" Click="clickScrol" x:Name="Client"/>
+        </StackPanel>
+    </Grid>
+</Page>

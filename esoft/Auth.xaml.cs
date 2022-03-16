@@ -42,16 +42,10 @@ namespace esoft
                         if (window.GetType() == typeof(MainWindow))
                         {
                             (window as MainWindow).ButtonAuth.Content = "Выход";
+                            (window as MainWindow).ClientInfo.IsEnabled = true;
                         }
                     }
-                    
-                    foreach (Window window in Application.Current.Windows)
-                    {
-                        if (window.GetType() == typeof(MainWindow))
-                        {
-                            (window as MainWindow).ClientInfo.IsEnabled = true;
-                    }
-                    }
+
 
                 if (seachUser[0].RoleId == "A")
                 {

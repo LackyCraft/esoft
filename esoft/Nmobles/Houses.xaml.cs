@@ -18,12 +18,14 @@ namespace esoft.Nmobles
     /// <summary>
     /// Логика взаимодействия для Houses.xaml
     /// </summary>
-    public partial class Houses : Page
+    public partial class Houses1 : Page
     {
-        public Houses()
+        List<Houses> housesList = eSoftEntities.GetContext().Houses.ToList();
+
+        public Houses1()
         {
             InitializeComponent();
-            DataGridHouses.ItemsSource = eSoftEntities.GetContext().Houses.ToList();
+        DataGridHouses.ItemsSource = housesList;
         }
         private void DeletedAt(object sender, RoutedEventArgs e)
         {
@@ -32,7 +34,27 @@ namespace esoft.Nmobles
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-
+            if (Application.Current.Resources["idUser"].ToString() == "null")
+            {
+                MessageBox.Show("Необходимо автроизоваться");
+            }
+            else
+            {
+                Nmobles.Edit.EditHousesWindow editApartament = new Nmobles.Edit.EditHousesWindow(DataGridHouses.SelectedItem as Houses);
+                editApartament.Show();
+            }
         }
+
+        private void ButtClickButtonSearcon_Click(object sender, RoutedEventArgs e)
+        {
+            List<Houses> filterList = housesList;
+            if (TextBoxSearchBox.Text.ToString().Length > 1)
+            {
+                filterList = filterList.Where(i => (i.ObjectNmobles.Title.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.CountFloor.ToString().Contains(TextBoxSearchBox.Text.ToString()) || i.CountRoom.ToString().Contains(TextBoxSearchBox.Text.ToString()) || i.Area.ToString().Contains(TextBoxSearchBox.Text.ToString()))).ToList();
+            }
+
+            DataGridHouses.ItemsSource = filterList;
+        }
+
     }
 }

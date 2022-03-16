@@ -61,7 +61,7 @@ namespace esoft.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на .
+        ///   Ищет локализованную строку, похожую на null.
         /// </summary>
         internal static string idUser {
             get {

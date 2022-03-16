@@ -78,3 +78,7 @@ C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\ApartamentsList.bam
 C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Houses.baml
 C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Edit\EditApartamentWindows.g.cs
 C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Edit\EditApartamentWindows.baml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Edit\editLandWindows.g.cs
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Edit\editLandWindows.baml
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Edit\EditHousesWindow.g.cs
+C:\Users\ExamWSR\Desktop\esoft\esoft\esoft\obj\Debug\Nmobles\Edit\EditHousesWindow.baml

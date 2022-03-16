@@ -1,12 +1,11 @@
-﻿<Window x:Class="esoft.Nmobles.Edit.EditApartamentWindows"
+﻿<Window x:Class="esoft.Nmobles.Edit.EditHousesWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:esoft.Nmobles.Edit"
         mc:Ignorable="d"
-        Height="800" Width="400">
-    
+        Title="EditHousesWindow" Height="800" Width="400">
     <Grid Background="White">
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15">
@@ -33,13 +32,8 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                <TextBlock  Text="Этаж:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <TextBox x:Name="TextBoxFloor" Width="200" HorizontalAlignment="Right"/>
-            </StackPanel>
-            
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                <TextBlock  Text="Квартира:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <TextBox x:Name="TextBoxAddressNumber" Width="200" HorizontalAlignment="Right"/>
+                <TextBlock Text="Кол-во. этажей:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxCountFloor"  Width="200" HorizontalAlignment="Right"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">

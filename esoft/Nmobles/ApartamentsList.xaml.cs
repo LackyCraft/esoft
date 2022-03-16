@@ -20,10 +20,13 @@ namespace esoft.Nmobles
     /// </summary>
     public partial class ApartamentsList : Page
     {
+
+        List<Apartmens> ApartmensList = eSoftEntities.GetContext().Apartmens.ToList();
+
         public ApartamentsList()
         {
             InitializeComponent();
-            DataGridApartaments.ItemsSource = eSoftEntities.GetContext().Apartmens.ToList();
+            DataGridApartaments.ItemsSource = ApartmensList;
         }
         private void DeletedAt(object sender, RoutedEventArgs e)
         {
@@ -32,8 +35,27 @@ namespace esoft.Nmobles
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-            Nmobles.Edit.EditApartamentWindows editApartament = new Nmobles.Edit.EditApartamentWindows(DataGridApartaments.SelectedItem as Apartmens);
-            editApartament.Show();
+            if (Application.Current.Resources["idUser"].ToString() == "null")
+            {
+                MessageBox.Show("Необходимо автроизоваться");
+            }
+            else
+            {
+                Nmobles.Edit.EditApartamentWindows editApartament = new Nmobles.Edit.EditApartamentWindows(DataGridApartaments.SelectedItem as Apartmens);
+                editApartament.Show();
+            }
         }
+
+        private void ButtClickButtonSearcon_Click(object sender, RoutedEventArgs e)
+        {
+            List<Apartmens> filterList = ApartmensList;
+            if (TextBoxSearchBox.Text.ToString().Length > 1)
+            {
+                filterList = filterList.Where(i => (i.ObjectNmobles.Title.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.Floor.ToString().Contains(TextBoxSearchBox.Text.ToString()) || i.CountRooms.ToString().Contains(TextBoxSearchBox.Text.ToString()) || i.Area.ToString().Contains(TextBoxSearchBox.Text.ToString()))).ToList();
+            }
+
+            DataGridApartaments.ItemsSource = filterList;
+        }
+
     }
 }

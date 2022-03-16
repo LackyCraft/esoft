@@ -20,10 +20,13 @@ namespace esoft.Nmobles
     /// </summary>
     public partial class LandList : Page
     {
+
+        List<Land> HousesList = eSoftEntities.GetContext().Land.ToList();
+
         public LandList()
         {
             InitializeComponent();
-            DataGridLands.ItemsSource = eSoftEntities.GetContext().Land.ToList();
+            DataGridLands.ItemsSource = HousesList;
         }
 
         private void DeletedAt(object sender, RoutedEventArgs e)
@@ -33,7 +36,27 @@ namespace esoft.Nmobles
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-
+            if (Application.Current.Resources["idUser"].ToString() == "null")
+            {
+                MessageBox.Show("Необходимо автроизоваться");
+            }
+            else
+            {
+                Nmobles.Edit.editLandWindows editApartament = new Nmobles.Edit.editLandWindows(DataGridLands.SelectedItem as Land);
+                editApartament.Show();
+            }
         }
+
+        private void ButtClickButtonSearcon_Click(object sender, RoutedEventArgs e)
+        {
+            List<Land> filterList = HousesList;
+            if (TextBoxSearchBox.Text.ToString().Length > 1)
+            {
+                filterList = filterList.Where(i => (i.ObjectNmobles.Title.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.Area.ToString().Contains(TextBoxSearchBox.Text.ToString()))).ToList();
+            }
+
+            DataGridLands.ItemsSource = filterList;
+        }
+
     }
 }

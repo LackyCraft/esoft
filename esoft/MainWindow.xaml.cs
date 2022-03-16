@@ -40,7 +40,6 @@ namespace esoft
             {
                 clickedButton.Content = "Войти";
                 MainFrame.Content = null;
-                StackPanelMenu.IsEnabled = false;
                 Application.Current.Resources["idUser"] = "null";
             }
             else
@@ -54,13 +53,18 @@ namespace esoft
             //Так, как навигации внутри фрейма отключена. То при каждом открытии новой вкладке она будет писаться поверх прошлой
             // Что ведет к утечке памяти. Поэтому при открытии новой вкладки чистим содержимое фрейма
             MainFrame.Content = null;
-
+            ClientInfo.Background = (Brush)Application.Current.MainWindow.FindResource("Grey");
+            RemoteNmobles.Background = (Brush)Application.Current.MainWindow.FindResource("Grey");
             if (sender == ClientInfo)
             {
                 MainFrame.NavigationService.Navigate(new Uri("/RolePage/Client/UserInfo.xaml", UriKind.Relative));
+                (sender as Button).Background = (Brush)Application.Current.MainWindow.FindResource("LightGrey");
             }
-            if(sender == RemoteNmobles)
-               MainFrame.NavigationService.Navigate(new Uri("/Nmobles/RemoteNmobles.xaml", UriKind.Relative)); 
+            if (sender == RemoteNmobles)
+            {
+                MainFrame.NavigationService.Navigate(new Uri("/Nmobles/RemoteNmobles.xaml", UriKind.Relative));
+                (sender as Button).Background = (Brush)Application.Current.MainWindow.FindResource("LightGrey");
+            }
         }
     }
 }

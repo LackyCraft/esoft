@@ -55,7 +55,7 @@ namespace esoft
                         if (window.GetType() == typeof(MainWindow))
                         {
                             (window as MainWindow).ClientInfo.IsEnabled = false;
-                            (window as MainWindow).ClientInfo.Background = (Brush)Application.Current.MainWindow.FindResource("Grey");
+                            (window as MainWindow).ClientInfo.Foreground = (Brush)Application.Current.MainWindow.FindResource("LightGrey");
                         }
                     }
                 }
@@ -66,6 +66,7 @@ namespace esoft
                     {
                         if (window.GetType() == typeof(MainWindow))
                         {
+                            (window as MainWindow).ClientInfo.IsEnabled = true;
                             (window as MainWindow).ClientInfo.Foreground = (Brush)Application.Current.MainWindow.FindResource("DarkBlue");
                         }
                     }

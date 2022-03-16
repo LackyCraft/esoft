@@ -34,7 +34,7 @@ namespace esoft.Nmobles
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-            if (Application.Current.Resources["idUser"].ToString() == "null" && (Application.Current.Resources["Role"].ToString() == "R" || Application.Current.Resources["Role"].ToString() == "A"))
+            if (Application.Current.Resources["idUser"].ToString() == "null" && Application.Current.Resources["Role"].ToString() != "C")
             {
                 MessageBox.Show("Warning 403\nНеобходимо автроизоваться под ролью Администратора или Риелтора");
             }

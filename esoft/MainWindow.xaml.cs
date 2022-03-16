@@ -24,6 +24,7 @@ namespace esoft
         {
             InitializeComponent();
             Application.Current.Resources["idUser"] = "null";
+            Application.Current.Resources["Role"] = "null";
             MainFrame.NavigationService.Navigate(new Uri("Auth.xaml", UriKind.Relative));
         }
 
@@ -41,6 +42,7 @@ namespace esoft
                 clickedButton.Content = "Войти";
                 MainFrame.Content = null;
                 Application.Current.Resources["idUser"] = "null";
+                Application.Current.Resources["Role"] = "null";
             }
             else
             {

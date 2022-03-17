@@ -17,6 +17,7 @@ namespace esoft
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public City()
         {
+            this.Demand = new HashSet<Demand>();
             this.ObjectNmobles = new HashSet<ObjectNmobles>();
         }
     
@@ -24,6 +25,8 @@ namespace esoft
         public string CityName { get; set; }
         public string Description { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Demand> Demand { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ObjectNmobles> ObjectNmobles { get; set; }
     }

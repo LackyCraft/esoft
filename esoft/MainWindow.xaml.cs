@@ -55,21 +55,30 @@ namespace esoft
             //Так, как навигации внутри фрейма отключена. То при каждом открытии новой вкладке она будет писаться поверх прошлой
             // Что ведет к утечке памяти. Поэтому при открытии новой вкладки чистим содержимое фрейма
             MainFrame.Content = null;
-            if(Application.Current.Resources["Role"].ToString() != "A" && Application.Current.Resources["Role"].ToString() != "null")
-                ClientInfo.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
+
+            //Перекраска кнопок меню. Нажатая в Hover не нажатые в Normal
             RemoteNmobles.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
+            ClientInfo.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
+            Store.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
+            //Красим в Hover нажатую кнопку
+            (sender as Button).Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey1");
+
+
+            if (Application.Current.Resources["Role"].ToString() != "A" && Application.Current.Resources["Role"].ToString() != "null")
+                
+
+            //Buttons menu
             if (sender == ClientInfo)
-            {
                 MainFrame.NavigationService.Navigate(new Uri("/RolePage/Client/UserInfo.xaml", UriKind.Relative));
-                (sender as Button).Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey1");
-            }
             if (sender == RemoteNmobles)
-            {
                 MainFrame.NavigationService.Navigate(new Uri("/Nmobles/RemoteNmobles.xaml", UriKind.Relative));
-                (sender as Button).Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey1");
-            }
-            if(sender == ButtonRegister)
-                MainFrame.NavigationService.Navigate(new Uri("Register.xaml", UriKind.Relative));
+            if (sender == Store)
+                MainFrame.NavigationService.Navigate(new Uri("/Store/MainStorePage.xaml", UriKind.Relative));
+
+            //Button Register new Client
+            if (sender == ButtonRegister)
+                MainFrame.NavigationService.Navigate(new Uri("/Register.xaml", UriKind.Relative));
+
         }
     }
 }

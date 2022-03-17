@@ -73,6 +73,18 @@
     <Compile Include="Client.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Demand.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DemandApartments.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DemandHouse.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DemandLand.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Houses.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -118,6 +130,12 @@
     <Compile Include="Nmobles\RemoteNmobles.xaml.cs">
       <DependentUpon>RemoteNmobles.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Nmobles\Store\AddSupplies.xaml.cs">
+      <DependentUpon>AddSupplies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nmobles\Store\SuppliesStore.xaml.cs">
+      <DependentUpon>SuppliesStore.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ObjectNmobles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -144,6 +162,15 @@
     </Compile>
     <Compile Include="RolePage\Client\UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Store\MainStorePage.xaml.cs">
+      <DependentUpon>MainStorePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Store\PayStoreMain.xaml.cs">
+      <DependentUpon>PayStoreMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Supplies.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -205,6 +232,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Nmobles\Store\AddSupplies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\SuppliesStore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +261,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RolePage\Client\UserInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Store\MainStorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Store\PayStoreMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

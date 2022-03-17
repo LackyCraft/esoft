@@ -14,6 +14,13 @@ namespace esoft
     
     public partial class Realtor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Realtor()
+        {
+            this.Demand = new HashSet<Demand>();
+            this.Supplies = new HashSet<Supplies>();
+        }
+    
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MidlName { get; set; }
@@ -21,6 +28,10 @@ namespace esoft
         public int idUser { get; set; }
         public int id { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Demand> Demand { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supplies> Supplies { get; set; }
     }
 }

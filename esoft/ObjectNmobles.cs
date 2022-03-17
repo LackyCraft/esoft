@@ -20,6 +20,7 @@ namespace esoft
             this.Apartmens = new HashSet<Apartmens>();
             this.Houses = new HashSet<Houses>();
             this.Land = new HashSet<Land>();
+            this.Supplies = new HashSet<Supplies>();
         }
     
         public int ObjectNmoblesId { get; set; }
@@ -31,6 +32,7 @@ namespace esoft
         public string AddressHouse { get; set; }
         public string AddressNumber { get; set; }
         public Nullable<int> idCity { get; set; }
+        public Nullable<int> DeletedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Apartmens> Apartmens { get; set; }
@@ -40,5 +42,8 @@ namespace esoft
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Land> Land { get; set; }
         public virtual TypeObjectNmobles TypeObjectNmobles { get; set; }
+        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supplies> Supplies { get; set; }
     }
 }

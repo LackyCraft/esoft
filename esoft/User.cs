@@ -18,6 +18,7 @@ namespace esoft
         public User()
         {
             this.Client = new HashSet<Client>();
+            this.ObjectNmobles = new HashSet<ObjectNmobles>();
             this.Realtor = new HashSet<Realtor>();
         }
     
@@ -28,6 +29,8 @@ namespace esoft
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Client> Client { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ObjectNmobles> ObjectNmobles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Realtor> Realtor { get; set; }
         public virtual Role Role { get; set; }

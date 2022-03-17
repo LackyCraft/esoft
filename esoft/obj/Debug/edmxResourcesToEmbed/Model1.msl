@@ -34,6 +34,60 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Demand">
+      <EntityTypeMapping TypeName="eSoftModel.Demand">
+        <MappingFragment StoreEntitySet="Demand">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+          <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+          <ScalarProperty Name="RealtorId" ColumnName="RealtorId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="TypeDemand" ColumnName="TypeDemand" />
+          <ScalarProperty Name="AddressCity" ColumnName="AddressCity" />
+          <ScalarProperty Name="AddressStreet" ColumnName="AddressStreet" />
+          <ScalarProperty Name="AddressHouse" ColumnName="AddressHouse" />
+          <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DemandApartments">
+      <EntityTypeMapping TypeName="eSoftModel.DemandApartments">
+        <MappingFragment StoreEntitySet="DemandApartments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MinArea" ColumnName="MinArea" />
+          <ScalarProperty Name="MaxArea" ColumnName="MaxArea" />
+          <ScalarProperty Name="MinRooms" ColumnName="MinRooms" />
+          <ScalarProperty Name="MaxRooms" ColumnName="MaxRooms" />
+          <ScalarProperty Name="MinFloor" ColumnName="MinFloor" />
+          <ScalarProperty Name="MaxFloor" ColumnName="MaxFloor" />
+          <ScalarProperty Name="idDemand" ColumnName="idDemand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DemandHouse">
+      <EntityTypeMapping TypeName="eSoftModel.DemandHouse">
+        <MappingFragment StoreEntitySet="DemandHouse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idDemand" ColumnName="idDemand" />
+          <ScalarProperty Name="MinFloors" ColumnName="MinFloors" />
+          <ScalarProperty Name="MaxFloors" ColumnName="MaxFloors" />
+          <ScalarProperty Name="MinArea" ColumnName="MinArea" />
+          <ScalarProperty Name="MaxArea" ColumnName="MaxArea" />
+          <ScalarProperty Name="MinRooms" ColumnName="MinRooms" />
+          <ScalarProperty Name="MaxRooms" ColumnName="MaxRooms" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DemandLand">
+      <EntityTypeMapping TypeName="eSoftModel.DemandLand">
+        <MappingFragment StoreEntitySet="DemandLand">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MinArea" ColumnName="MinArea" />
+          <ScalarProperty Name="MaxArea" ColumnName="MaxArea" />
+          <ScalarProperty Name="DemandId" ColumnName="DemandId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Houses">
       <EntityTypeMapping TypeName="eSoftModel.Houses">
         <MappingFragment StoreEntitySet="Houses">
@@ -66,6 +120,7 @@
           <ScalarProperty Name="AddressHouse" ColumnName="AddressHouse" />
           <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
           <ScalarProperty Name="idCity" ColumnName="idCity" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -86,6 +141,17 @@
         <MappingFragment StoreEntitySet="Role">
           <ScalarProperty Name="Role1" ColumnName="Role" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supplies">
+      <EntityTypeMapping TypeName="eSoftModel.Supplies">
+        <MappingFragment StoreEntitySet="Supplies">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="RialtorId" ColumnName="RialtorId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ObjectNmobles" ColumnName="ObjectNmobles" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

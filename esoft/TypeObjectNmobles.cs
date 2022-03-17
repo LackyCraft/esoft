@@ -17,12 +17,15 @@ namespace esoft
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TypeObjectNmobles()
         {
+            this.Demand = new HashSet<Demand>();
             this.ObjectNmobles = new HashSet<ObjectNmobles>();
         }
     
         public string TypeId { get; set; }
         public string Type { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Demand> Demand { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ObjectNmobles> ObjectNmobles { get; set; }
     }

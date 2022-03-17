@@ -40,11 +40,16 @@ namespace esoft
         public virtual DbSet<Apartmens> Apartmens { get; set; }
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Demand> Demand { get; set; }
+        public virtual DbSet<DemandApartments> DemandApartments { get; set; }
+        public virtual DbSet<DemandHouse> DemandHouse { get; set; }
+        public virtual DbSet<DemandLand> DemandLand { get; set; }
         public virtual DbSet<Houses> Houses { get; set; }
         public virtual DbSet<Land> Land { get; set; }
         public virtual DbSet<ObjectNmobles> ObjectNmobles { get; set; }
         public virtual DbSet<Realtor> Realtor { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<Supplies> Supplies { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeObjectNmobles> TypeObjectNmobles { get; set; }
         public virtual DbSet<User> User { get; set; }

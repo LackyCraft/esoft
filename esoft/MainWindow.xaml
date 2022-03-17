@@ -30,8 +30,8 @@
                 <Button x:Name="ButtonRegister" Content="Регистрация"
                  Margin="0,5,15,5" Background="{StaticResource LightRed}"
                  VerticalAlignment="Center" Height="50"
-                Click="ButtonAuth" Width="150"/>
-                <Button x:Name="Horizontal"  Content="Вход"
+                Click="scrolPage" Width="150"/>
+                <Button x:Name="ButtonAuth"  Content="Вход"
                  Margin="0,5,15,5"
                  VerticalAlignment="Center" Height="50"
                 Click="AuthClick" Width="150"/>

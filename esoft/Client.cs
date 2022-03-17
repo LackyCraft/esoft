@@ -14,6 +14,13 @@ namespace esoft
     
     public partial class Client
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Client()
+        {
+            this.Demand = new HashSet<Demand>();
+            this.Supplies = new HashSet<Supplies>();
+        }
+    
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MidlName { get; set; }
@@ -23,5 +30,9 @@ namespace esoft
         public string Phone { get; set; }
     
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Demand> Demand { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supplies> Supplies { get; set; }
     }
 }

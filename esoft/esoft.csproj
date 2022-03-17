@@ -130,6 +130,9 @@
     <Compile Include="Nmobles\RemoteNmobles.xaml.cs">
       <DependentUpon>RemoteNmobles.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Nmobles\Store\AddApartamentsSuplises.xaml.cs">
+      <DependentUpon>AddApartamentsSuplises.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nmobles\Store\AddSupplies.xaml.cs">
       <DependentUpon>AddSupplies.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Nmobles\RemoteNmobles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\AddApartamentsSuplises.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

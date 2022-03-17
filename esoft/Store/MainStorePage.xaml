@@ -25,7 +25,9 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <Frame x:Name="FrameNmobles"/>
+            <ScrollViewer>
+                <Frame x:Name="FrameNmobles"/>
+            </ScrollViewer>
         </Grid>
 
     </Grid>

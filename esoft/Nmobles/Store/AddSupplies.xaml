@@ -8,70 +8,88 @@
       Title="AddSupplies">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Background="{StaticResource Grey}" Height="Auto" />
-        <StackPanel VerticalAlignment="Bottom" Margin="15">
-            <Image Source="/Image/logo.png" Height="80"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                <TextBlock Text="Наименование недвижимости:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <TextBox x:Name="TextBoxTitle"  Width="200" HorizontalAlignment="Right"/>
+        <Button Background="{StaticResource Grey}" Height="Auto" Grid.ColumnSpan="2"/>
+        <Image Source="/Image/logo.png" Height="80" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+        
+        <Grid Grid.Column="0" Margin="0,80,0,0">
+
+            <Button x:Name="ButtonBackgroundMainInfoSuppline"  Height="Auto" Background="{x:Null}"/>
+
+            <StackPanel VerticalAlignment="Top" Margin="15" x:Name="MainInfoSupplies">
+               
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                    <TextBlock Text="Тип недвижимости*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <ComboBox x:Name="ComboBoxTypeNmobles"  Width="200" HorizontalAlignment="Right" DisplayMemberPath="Type" IsEnabled="False" SelectedValuePath="TypeId"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                    <TextBlock Text="Укажите цену*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBox x:Name="TextBoxPrice" Text="0"  Width="200" HorizontalAlignment="Right" TextChanged="changedCheck"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                    <TextBlock Text="Ответсвенный риэлтор*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <ComboBox x:Name="ComboBoxRealtor" SelectedValuePath="id"  Width="200" HorizontalAlignment="Right">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{} {0} {1} {2}">
+                                            <Binding Path="LastName"/>
+                                            <Binding Path="FirstName"/>
+                                            <Binding Path="MidlName"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                    <TextBlock Text="Клиент*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <ComboBox x:Name="ComboBoxClient" SelectedValuePath="Id"  Width="200" HorizontalAlignment="Right">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2} - {3}">
+                                            <Binding Path="LastName"/>
+                                            <Binding Path="FirstName"/>
+                                            <Binding Path="MidlName"/>
+                                            <Binding Path="Email"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,17,0,15">
+                    <TextBlock Text="Широта:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBox Text="0" x:Name="TextBoxLat"  Width="200" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                    <TextBlock Text="Долгота:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBox Text="0" x:Name="TextBoxLng"  Width="200" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <TextBlock Text="Поля, обозначеные * - являются обязательными к заполнению" HorizontalAlignment="Left" Margin="15,0,0,10" TextWrapping="Wrap" Foreground="{StaticResource DarkGrey3}"/>
+
+                <TextBlock x:Name="TextBlockWarning"  Text="" FontWeight="Bold" TextAlignment="Center" Foreground="{StaticResource Warning}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+                <Button Click="сheckWarning" x:Name="ButtonAddSupline" Content="Заполнить дополнительные поля"/>
             </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                <TextBlock Text="Тип недвижимости:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <ComboBox x:Name="ComboBoxTypeNmobles"  Width="200" HorizontalAlignment="Right" DisplayMemberPath="Type" IsEnabled="False" SelectedValuePath="TypeId"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                <TextBlock Text="Укажите цену:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <TextBox x:Name="TextBoxPrice" Text="0"  Width="200" HorizontalAlignment="Right" TextChanged="changedCheck"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                <TextBlock Text="Ответсвенный риэлтор:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <ComboBox x:Name="ComboBoxRealtor" SelectedValuePath="id"  Width="200" HorizontalAlignment="Right">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock>
-                                <TextBlock.Text>
-                                    <MultiBinding StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="LastName"/>
-                                        <Binding Path="FirstName"/>
-                                        <Binding Path="MidlName"/>
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                <TextBlock Text="Клиент:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <ComboBox x:Name="ComboBoxClient" SelectedValuePath="Id"  Width="200" HorizontalAlignment="Right">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock>
-                                <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0} {1} {2} - {3}">
-                                        <Binding Path="LastName"/>
-                                        <Binding Path="FirstName"/>
-                                        <Binding Path="MidlName"/>
-                                        <Binding Path="Email"/> 
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-            </StackPanel>
-
-            <Grid>
+        </Grid>
+        
+        <Grid Grid.Column="1">
                 <Frame x:Name="FrameTypeInfo" NavigationUIVisibility="Hidden"></Frame>
             </Grid>
 
-            <TextBlock x:Name="TextBlockWarning"  Text="" FontWeight="Bold" TextAlignment="Center" Foreground="{StaticResource Warning}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
-            <Button Click="сheckWarning" x:Name="ButtonAddSupline" Content="Добавить потребность"/>
-        </StackPanel>
     </Grid>
 </Page>

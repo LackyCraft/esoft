@@ -165,3 +165,5 @@ I:\esoft\esoft\obj\Debug\Nmobles\Store\AddSupplies.baml
 I:\esoft\esoft\obj\Debug\Nmobles\Store\SuppliesStore.baml
 I:\esoft\esoft\obj\Debug\Store\MainStorePage.baml
 I:\esoft\esoft\obj\Debug\Store\PayStoreMain.baml
+I:\esoft\esoft\obj\Debug\Nmobles\Store\AddApartamentsSuplises.g.cs
+I:\esoft\esoft\obj\Debug\Nmobles\Store\AddApartamentsSuplises.baml

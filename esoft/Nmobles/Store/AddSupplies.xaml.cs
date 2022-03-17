@@ -47,17 +47,17 @@ namespace esoft.Nmobles.Store
                 MessageBox.Show("Warning 422\nЦена должна быть целым положительным числом!");
                 TextBoxPrice.Text = "0";
             }
-
         }
 
         private void сheckWarning(object sender, RoutedEventArgs e)
         {
             TextBlockWarning.Text = "";
-            TextBoxTitle.Background = Brushes.White;
-            if (TextBoxTitle.Text.Length < 1)
+            float lat = 0, lng = 0;
+            if (!float.TryParse(TextBoxLat.Text, out lat) || !float.TryParse(TextBoxLng.Text, out lng))
             {
-                TextBlockWarning.Text = "Наименование должно быть заполнено";
-                TextBoxTitle.Background = (Brush)Application.Current.MainWindow.FindResource("Warning");
+                TextBlockWarning.Text += "\nКоординаты должны быть числом вещественного типа";
+                TextBoxLat.Text = "0";
+                TextBoxLng.Text = "0";
             }
             if (ComboBoxRealtor.SelectedItem is null)
             {
@@ -67,6 +67,21 @@ namespace esoft.Nmobles.Store
             {
                 TextBlockWarning.Text += "\nНе выбран клиент";
             }
+            if(TextBlockWarning.Text == "")
+            {
+                MainInfoSupplies.Children.Remove(ButtonAddSupline);
+                MainInfoSupplies.IsEnabled = false;
+                ButtonBackgroundMainInfoSuppline.Background = (Brush)Application.Current.FindResource("DarkGrey1");
+
+                if(ComboBoxTypeNmobles.SelectedValue.ToString() == "A")
+                    FrameTypeInfo.Content = new AddApartamentsSuplises(ComboBoxTypeNmobles.SelectedValuePath, int.Parse(TextBoxPrice.Text), int.Parse(ComboBoxRealtor.SelectedValue.ToString()), int.Parse(ComboBoxClient.SelectedValue.ToString()), float.Parse(TextBoxLat.Text), float.Parse(TextBoxLng.Text));
+
+            }
+        }
+
+        private void TextBoxLat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -19,9 +19,12 @@ namespace esoft.Nmobles.Store
     {
         List<Supplies> landList;
 
+        private string selectedTypeId;
+
         public SuppliesStore(string type)
         {
             InitializeComponent();
+            selectedTypeId = type;
             DataGridLandsStore.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => i.ObjectNmobles1.TypeId == type).ToList();
             landList = eSoftEntities.GetContext().Supplies.Where(i => i.ObjectNmobles1.TypeId == type).ToList();
         }
@@ -43,6 +46,11 @@ namespace esoft.Nmobles.Store
                 Nmobles.Edit.editLandWindows editApartament = new Nmobles.Edit.editLandWindows(DataGridLandsStore.SelectedItem as Land);
                 editApartament.Show();
             } */
+        }
+
+        private void addSupplies(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AddSupplies(selectedTypeId));
         }
 
         private void ButtClickButtonSearchClick(object sender, RoutedEventArgs e)

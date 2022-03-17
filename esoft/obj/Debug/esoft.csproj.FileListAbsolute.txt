@@ -157,3 +157,11 @@ C:\esoft\esoft\obj\Debug\Store\PayStoreMain.baml
 C:\esoft\esoft\obj\Debug\Nmobles\Store\SuppliesStore.g.cs
 C:\esoft\esoft\obj\Debug\Nmobles\Store\SuppliesStore.baml
 C:\esoft\esoft\obj\Debug\Nmobles\Store\AddSupplies.g.cs
+I:\esoft\esoft\obj\Debug\Nmobles\Store\AddSupplies.g.cs
+I:\esoft\esoft\obj\Debug\Nmobles\Store\SuppliesStore.g.cs
+I:\esoft\esoft\obj\Debug\Store\MainStorePage.g.cs
+I:\esoft\esoft\obj\Debug\Store\PayStoreMain.g.cs
+I:\esoft\esoft\obj\Debug\Nmobles\Store\AddSupplies.baml
+I:\esoft\esoft\obj\Debug\Nmobles\Store\SuppliesStore.baml
+I:\esoft\esoft\obj\Debug\Store\MainStorePage.baml
+I:\esoft\esoft\obj\Debug\Store\PayStoreMain.baml

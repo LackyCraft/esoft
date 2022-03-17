@@ -13,27 +13,65 @@
             <Image Source="/Image/logo.png" Height="80"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                <TextBlock Text="Наименование:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBlock Text="Наименование недвижимости:" VerticalAlignment="Center" Margin="0,0,15,0"/>
                 <TextBox x:Name="TextBoxTitle"  Width="200" HorizontalAlignment="Right"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                <TextBlock Text="Выберите тип недвижимости:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <ComboBox x:Name="ComboBoxTypeNmobles"  Width="200" HorizontalAlignment="Right" DisplayMemberPath="Type"/>
+                <TextBlock Text="Тип недвижимости:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <ComboBox x:Name="ComboBoxTypeNmobles"  Width="200" HorizontalAlignment="Right" DisplayMemberPath="Type" IsEnabled="False" SelectedValuePath="TypeId"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
                 <TextBlock Text="Укажите цену:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <TextBox x:Name="TextBoxPrice"  Width="200" HorizontalAlignment="Right"/>
+                <TextBox x:Name="TextBoxPrice" Text="0"  Width="200" HorizontalAlignment="Right" TextChanged="changedCheck"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
                 <TextBlock Text="Ответсвенный риэлтор:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                <TextBox x:Name="TextBoxRealtor"  Width="200" HorizontalAlignment="Right"/>
+                <ComboBox x:Name="ComboBoxRealtor" SelectedValuePath="id"  Width="200" HorizontalAlignment="Right">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="LastName"/>
+                                        <Binding Path="FirstName"/>
+                                        <Binding Path="MidlName"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
 
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Клиент:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <ComboBox x:Name="ComboBoxClient" SelectedValuePath="Id"  Width="200" HorizontalAlignment="Right">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} {2} - {3}">
+                                        <Binding Path="LastName"/>
+                                        <Binding Path="FirstName"/>
+                                        <Binding Path="MidlName"/>
+                                        <Binding Path="Email"/> 
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+            <Grid>
+                <Frame x:Name="FrameTypeInfo" NavigationUIVisibility="Hidden"></Frame>
+            </Grid>
+
             <TextBlock x:Name="TextBlockWarning"  Text="" FontWeight="Bold" TextAlignment="Center" Foreground="{StaticResource Warning}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
-            <Button Click="clickButtonRegister" x:Name="ButtonLogin" Content="Зарегистрироваться"/>
+            <Button Click="сheckWarning" x:Name="ButtonAddSupline" Content="Добавить потребность"/>
         </StackPanel>
     </Grid>
 </Page>

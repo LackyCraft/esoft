@@ -43,11 +43,16 @@ namespace esoft
                 MainFrame.Content = null;
                 Application.Current.Resources["idUser"] = "null";
                 Application.Current.Resources["Role"] = "null";
+                ClientInfo.Background = (Brush)Application.Current.MainWindow.FindResource("Grey");
+                ClientInfo.IsEnabled = false;
             }
             else
             {
                 MainFrame.NavigationService.Navigate(new Uri("Auth.xaml", UriKind.Relative));
             }
+            //Button Register new Client
+            if (sender == ButtonRegister)
+                MainFrame.NavigationService.Navigate(new Uri("/Register.xaml", UriKind.Relative));
         }
 
         private void scrolPage(object sender, RoutedEventArgs e)
@@ -56,15 +61,21 @@ namespace esoft
             // Что ведет к утечке памяти. Поэтому при открытии новой вкладки чистим содержимое фрейма
             MainFrame.Content = null;
 
+
             //Перекраска кнопок меню. Нажатая в Hover не нажатые в Normal
             RemoteNmobles.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
-            ClientInfo.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
             Store.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
+
+            //Если пользователь не админ и авторизован, то кнопку Личной карточки так же красим в Normal
+            if (Application.Current.Resources["Role"] != "null" && Application.Current.Resources["Role"] != "A")
+                ClientInfo.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
+
             //Красим в Hover нажатую кнопку
             (sender as Button).Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey1");
 
 
-            if (Application.Current.Resources["Role"].ToString() != "A" && Application.Current.Resources["Role"].ToString() != "null")
+            
+
                 
 
             //Buttons menu
@@ -74,10 +85,6 @@ namespace esoft
                 MainFrame.NavigationService.Navigate(new Uri("/Nmobles/RemoteNmobles.xaml", UriKind.Relative));
             if (sender == Store)
                 MainFrame.NavigationService.Navigate(new Uri("/Store/MainStorePage.xaml", UriKind.Relative));
-
-            //Button Register new Client
-            if (sender == ButtonRegister)
-                MainFrame.NavigationService.Navigate(new Uri("/Register.xaml", UriKind.Relative));
 
         }
     }

@@ -164,7 +164,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Price" Type="Int32" Nullable="false" />
     <Property Name="RialtorId" Type="Int32" Nullable="false" />
     <Property Name="ClientId" Type="Int32" Nullable="false" />

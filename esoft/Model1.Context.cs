@@ -36,7 +36,7 @@ namespace esoft
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Apartmens> Apartmens { get; set; }
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Client> Client { get; set; }

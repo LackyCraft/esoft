@@ -36,16 +36,7 @@ namespace esoft.Nmobles.Store
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-            /*
-            if (Application.Current.Resources["idUser"].ToString() == "null" && Application.Current.Resources["Role"].ToString() != "C")
-            {
-                MessageBox.Show("Warning 403\nНеобходимо автроизоваться под ролью Администратора или Риелтора");
-            }
-            else
-            {
-                Nmobles.Edit.editLandWindows editApartament = new Nmobles.Edit.editLandWindows(DataGridLandsStore.SelectedItem as Land);
-                editApartament.Show();
-            } */
+
         }
 
         private void addSupplies(object sender, RoutedEventArgs e)

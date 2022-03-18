@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace esoft.Nmobles.Store
 {
     /// <summary>
-    /// Логика взаимодействия для AddApartamentsSuplises.xaml
+    /// Логика взаимодействия для AddDemandHouses.xaml
     /// </summary>
-    public partial class AddApartamentsSuplises : Page
+    public partial class AddDemandHouses : Page
     {
-        public AddApartamentsSuplises(string type, int price, int idReaaltor, int idClient, float lat, float lng)
+        public AddDemandHouses(string type, int priceMin, int priceMax, int idRealtor, int idClient)
         {
             InitializeComponent();
-        }
-        private void сheckWarning(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

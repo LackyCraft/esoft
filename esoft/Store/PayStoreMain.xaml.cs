@@ -44,6 +44,8 @@ namespace esoft.Store
             {
                 FrameNmobles.NavigationService.Navigate(new Nmobles.Store.SuppliesStore((sender as Button).Uid));
             }
+            if (selectNmobles.Name == "ButtonPay")
+                FrameNmobles.NavigationService.Navigate(new Nmobles.Store.DemandStore((sender as Button).Uid));
         }
     }
 }

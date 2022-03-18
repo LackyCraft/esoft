@@ -36,8 +36,8 @@
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Количество комнат" Binding="{Binding CountRooms}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Площадь" Binding="{Binding Area}"/>
 
-                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Широта" Binding="{Binding Lat}"/>
-                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Долгота" Binding="{Binding Lng}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Широта" Binding="{Binding ObjectNmobles.Lat}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Долгота" Binding="{Binding ObjectNmobles.Lng}"/>
 
                 <DataGridTemplateColumn Width="100" Header="Редактирование">
                     <DataGridTemplateColumn.CellTemplate>

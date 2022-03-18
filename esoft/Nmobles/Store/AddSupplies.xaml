@@ -4,8 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:esoft.Nmobles.Store"
-      mc:Ignorable="d"
-      Title="AddSupplies">
+      mc:Ignorable="d">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
@@ -21,7 +20,11 @@
             <Button x:Name="ButtonBackgroundMainInfoSuppline"  Height="Auto" Background="{x:Null}"/>
 
             <StackPanel VerticalAlignment="Top" Margin="15" x:Name="MainInfoSupplies">
-               
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                    <TextBlock Text="Наименование*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBox x:Name="TextBoxTitle"  Width="200" HorizontalAlignment="Right" TextChanged="changedCheck"/>
+                </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
                     <TextBlock Text="Тип недвижимости*:" VerticalAlignment="Center" Margin="0,0,15,0"/>

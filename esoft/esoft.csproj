@@ -130,11 +130,29 @@
     <Compile Include="Nmobles\RemoteNmobles.xaml.cs">
       <DependentUpon>RemoteNmobles.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Nmobles\Store\AddApartamentsSuplises.xaml.cs">
-      <DependentUpon>AddApartamentsSuplises.xaml</DependentUpon>
+    <Compile Include="Nmobles\Store\AddDemand.xaml.cs">
+      <DependentUpon>AddDemand.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nmobles\Store\AddDemandHouses.xaml.cs">
+      <DependentUpon>AddDemandHouses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nmobles\Store\AddSuplisesApartaments.xaml.cs">
+      <DependentUpon>AddSuplisesApartaments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nmobles\Store\AddSuplisesHouses.xaml.cs">
+      <DependentUpon>AddSuplisesHouses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nmobles\Store\AddSuplisesLand.xaml.cs">
+      <DependentUpon>AddSuplisesLand.xaml</DependentUpon>
     </Compile>
     <Compile Include="Nmobles\Store\AddSupplies.xaml.cs">
       <DependentUpon>AddSupplies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nmobles\Store\DemandAddInStore.xaml.cs">
+      <DependentUpon>DemandAddInStore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nmobles\Store\DemandStore.xaml.cs">
+      <DependentUpon>DemandStore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Nmobles\Store\SuppliesStore.xaml.cs">
       <DependentUpon>SuppliesStore.xaml</DependentUpon>
@@ -235,11 +253,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Nmobles\Store\AddApartamentsSuplises.xaml">
+    <Page Include="Nmobles\Store\AddDemand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\AddDemandHouses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\AddSuplisesApartaments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\AddSuplisesHouses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\AddSuplisesLand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Nmobles\Store\AddSupplies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\DemandAddInStore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\DemandStore.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

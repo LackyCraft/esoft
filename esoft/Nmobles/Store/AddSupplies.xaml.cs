@@ -52,6 +52,10 @@ namespace esoft.Nmobles.Store
         private void сheckWarning(object sender, RoutedEventArgs e)
         {
             TextBlockWarning.Text = "";
+            if (TextBoxTitle.Text.Length < 1)
+            {
+                TextBlockWarning.Text = "Заполните наименование";
+            }
             float lat = 0, lng = 0;
             if (!float.TryParse(TextBoxLat.Text, out lat) || !float.TryParse(TextBoxLng.Text, out lng))
             {
@@ -73,15 +77,9 @@ namespace esoft.Nmobles.Store
                 MainInfoSupplies.IsEnabled = false;
                 ButtonBackgroundMainInfoSuppline.Background = (Brush)Application.Current.FindResource("DarkGrey1");
 
-                if(ComboBoxTypeNmobles.SelectedValue.ToString() == "A")
-                    FrameTypeInfo.Content = new AddApartamentsSuplises(ComboBoxTypeNmobles.SelectedValuePath, int.Parse(TextBoxPrice.Text), int.Parse(ComboBoxRealtor.SelectedValue.ToString()), int.Parse(ComboBoxClient.SelectedValue.ToString()), float.Parse(TextBoxLat.Text), float.Parse(TextBoxLng.Text));
-
+                FrameTypeInfo.Content = new AddSuplisesApartaments(TextBoxTitle.Text, ComboBoxTypeNmobles.SelectedValue.ToString(), int.Parse(TextBoxPrice.Text), int.Parse(ComboBoxRealtor.SelectedValue.ToString()), int.Parse(ComboBoxClient.SelectedValue.ToString()), float.Parse(TextBoxLat.Text), float.Parse(TextBoxLng.Text));
             }
         }
 
-        private void TextBoxLat_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }

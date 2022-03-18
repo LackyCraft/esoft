@@ -140,7 +140,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
           <Property Name="RialtorId" Type="int" Nullable="false" />
           <Property Name="ClientId" Type="int" Nullable="false" />
@@ -694,7 +694,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="RialtorId" Type="Int32" Nullable="false" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />

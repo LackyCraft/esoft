@@ -24,7 +24,9 @@
             <Button Click="ScrolPage" x:Name="ButtonGoLand" x:Uid="L" Content="Земля" Grid.Column="2" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold" Margin="15,0,15,0"/>
         </Grid>
         <Grid Grid.Row="1">
-            <Frame x:Name="FrameNmobles"/>
+            <ScrollViewer>
+                <Frame x:Name="FrameNmobles"/>
+            </ScrollViewer>
         </Grid>
 
     </Grid>

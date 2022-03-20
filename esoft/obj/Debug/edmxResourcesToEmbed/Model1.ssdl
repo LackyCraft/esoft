@@ -44,6 +44,7 @@
     <Property Name="AddressStreet" Type="varchar" MaxLength="100" />
     <Property Name="AddressHouse" Type="varchar" MaxLength="100" />
     <Property Name="AddressNumber" Type="varchar" MaxLength="100" />
+    <Property Name="DeletedBy" Type="int" />
   </EntityType>
   <EntityType Name="DemandApartments">
     <Key>
@@ -140,6 +141,7 @@
     <Property Name="RialtorId" Type="int" Nullable="false" />
     <Property Name="ClientId" Type="int" Nullable="false" />
     <Property Name="ObjectNmobles" Type="int" />
+    <Property Name="DeletedAt" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -185,6 +187,18 @@
     <Property Name="RoleId" Type="char" MaxLength="1" Nullable="false" />
     <Property Name="Role" Type="nvarchar" MaxLength="30" />
   </EntityType>
+  <Association Name="Demand_FK">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Demand">
+        <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Apartmens_ObjectNmobles">
     <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="1" />
     <End Role="Land" Type="Self.Land" Multiplicity="*" />
@@ -413,6 +427,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Supplies_FK">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Supplies">
+        <PropertyRef Name="DeletedAt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Хранилище eSoftModelContainer">
     <EntitySet Name="Apartmens" EntityType="Self.Apartmens" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
@@ -443,6 +469,10 @@
     [ListUsers].[Role] AS [Role]
     FROM [dbo].[ListUsers] AS [ListUsers]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="Demand_FK" Association="Self.Demand_FK">
+      <End Role="User" EntitySet="User" />
+      <End Role="Demand" EntitySet="Demand" />
+    </AssociationSet>
     <AssociationSet Name="FK_Apartmens_ObjectNmobles" Association="Self.FK_Apartmens_ObjectNmobles">
       <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
       <End Role="Land" EntitySet="Land" />
@@ -518,6 +548,10 @@
     <AssociationSet Name="FK_User_RoleId" Association="Self.FK_User_RoleId">
       <End Role="Role" EntitySet="Role" />
       <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="Supplies_FK" Association="Self.Supplies_FK">
+      <End Role="User" EntitySet="User" />
+      <End Role="Supplies" EntitySet="Supplies" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

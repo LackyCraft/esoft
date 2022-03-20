@@ -21,7 +21,7 @@ namespace esoft.Nmobles
     public partial class LandList : Page
     {
 
-        List<Land> HousesList = eSoftEntities.GetContext().Land.ToList();
+        List<Land> HousesList = eSoftEntities.GetContext().Land.Where(i => i.ObjectNmobles.DeletedBy == null).ToList();
 
         public LandList()
         {
@@ -31,7 +31,21 @@ namespace esoft.Nmobles
 
         private void DeletedAt(object sender, RoutedEventArgs e)
         {
+            if (Application.Current.Resources["idUser"].ToString() == "null" && Application.Current.Resources["Role"].ToString() != "C")
+            {
+                MessageBox.Show("Warning 403\nНеобходимо автроизоваться под ролью Администратора или Риелтора");
+            }
+            else
+            {
+                ObjectNmobles editObjectNmobles = (DataGridLands.SelectedItem as Land).ObjectNmobles;
+                editObjectNmobles.DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
+                eSoftEntities.GetContext().SaveChanges();
+                MessageBox.Show("Запись успешгл удалена");
 
+                HousesList = eSoftEntities.GetContext().Land.Where(i => i.ObjectNmobles.DeletedBy == null).ToList();
+
+                DataGridLands.ItemsSource = HousesList;
+            }
         }
 
         private void Edit(object sender, RoutedEventArgs e)

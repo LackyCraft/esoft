@@ -39,6 +39,7 @@
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Широта" Binding="{Binding Lat}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Долгота" Binding="{Binding Lng}"/>
 
+                <!--
                 <DataGridTemplateColumn Width="100" Header="Редактирование">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -46,6 +47,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                -->
                 <DataGridTemplateColumn Width="100" Header="Удаление">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

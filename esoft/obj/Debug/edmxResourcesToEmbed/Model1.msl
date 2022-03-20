@@ -47,6 +47,7 @@
           <ScalarProperty Name="AddressStreet" ColumnName="AddressStreet" />
           <ScalarProperty Name="AddressHouse" ColumnName="AddressHouse" />
           <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -152,6 +153,7 @@
           <ScalarProperty Name="RialtorId" ColumnName="RialtorId" />
           <ScalarProperty Name="ClientId" ColumnName="ClientId" />
           <ScalarProperty Name="ObjectNmobles" ColumnName="ObjectNmobles" />
+          <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

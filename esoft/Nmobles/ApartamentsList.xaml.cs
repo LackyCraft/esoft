@@ -21,7 +21,7 @@ namespace esoft.Nmobles
     public partial class ApartamentsList : Page
     {
 
-        List<Apartmens> ApartmensList = eSoftEntities.GetContext().Apartmens.ToList();
+        List<Apartmens> ApartmensList = eSoftEntities.GetContext().Apartmens.Where(i => i.ObjectNmobles.DeletedBy == null).ToList();
 
         public ApartamentsList()
         {
@@ -30,7 +30,21 @@ namespace esoft.Nmobles
         }
         private void DeletedAt(object sender, RoutedEventArgs e)
         {
+            if (Application.Current.Resources["idUser"].ToString() == "null" && Application.Current.Resources["Role"].ToString() != "C")
+            {
+                MessageBox.Show("Warning 403\nНеобходимо автроизоваться под ролью Администратора или Риелтора");
+            }
+            else
+            {
+                ObjectNmobles editObjectNmobles = (DataGridApartaments.SelectedItem as Apartmens).ObjectNmobles;
+                editObjectNmobles.DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
+                eSoftEntities.GetContext().SaveChanges();
+                MessageBox.Show("Запись успешгл удалена");
 
+                ApartmensList = eSoftEntities.GetContext().Apartmens.Where(i => i.ObjectNmobles.DeletedBy == null).ToList();
+
+                DataGridApartaments.ItemsSource = ApartmensList;
+            }
         }
 
         private void Edit(object sender, RoutedEventArgs e)

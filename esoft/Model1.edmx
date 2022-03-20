@@ -49,6 +49,7 @@
           <Property Name="AddressStreet" Type="varchar" MaxLength="100" />
           <Property Name="AddressHouse" Type="varchar" MaxLength="100" />
           <Property Name="AddressNumber" Type="varchar" MaxLength="100" />
+          <Property Name="DeletedBy" Type="int" />
         </EntityType>
         <EntityType Name="DemandApartments">
           <Key>
@@ -145,6 +146,7 @@
           <Property Name="RialtorId" Type="int" Nullable="false" />
           <Property Name="ClientId" Type="int" Nullable="false" />
           <Property Name="ObjectNmobles" Type="int" />
+          <Property Name="DeletedAt" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -190,6 +192,18 @@
           <Property Name="RoleId" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Role" Type="nvarchar" MaxLength="30" />
         </EntityType>
+        <Association Name="Demand_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Apartmens_ObjectNmobles">
           <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="1" />
           <End Role="Land" Type="Self.Land" Multiplicity="*" />
@@ -418,6 +432,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Supplies_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Supplies">
+              <PropertyRef Name="DeletedAt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище eSoftModelContainer">
           <EntitySet Name="Apartmens" EntityType="Self.Apartmens" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
@@ -448,6 +474,10 @@
     [ListUsers].[Role] AS [Role]
     FROM [dbo].[ListUsers] AS [ListUsers]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="Demand_FK" Association="Self.Demand_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
           <AssociationSet Name="FK_Apartmens_ObjectNmobles" Association="Self.FK_Apartmens_ObjectNmobles">
             <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
             <End Role="Land" EntitySet="Land" />
@@ -524,6 +554,10 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <AssociationSet Name="Supplies_FK" Association="Self.Supplies_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="Supplies" EntitySet="Supplies" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -580,8 +614,10 @@
           <Property Name="AddressStreet" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="AddressHouse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="AddressNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedBy" Type="Int32" />
           <NavigationProperty Name="City" Relationship="Self.FK_Demand_City15" FromRole="Demand" ToRole="City" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Demand_Client" FromRole="Demand" ToRole="Client" />
+          <NavigationProperty Name="User" Relationship="Self.Demand_FK" FromRole="Demand" ToRole="User" />
           <NavigationProperty Name="Realtor" Relationship="Self.FK_Demand_Realtor" FromRole="Demand" ToRole="Realtor" />
           <NavigationProperty Name="TypeObjectNmobles" Relationship="Self.FK_Demand_TypeObjectNmobles" FromRole="Demand" ToRole="TypeObjectNmobles" />
           <NavigationProperty Name="DemandApartments" Relationship="Self.FK_DemandApartments_Demand" FromRole="Demand" ToRole="DemandApartments" />
@@ -699,9 +735,11 @@
           <Property Name="RialtorId" Type="Int32" Nullable="false" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />
           <Property Name="ObjectNmobles" Type="Int32" />
+          <Property Name="DeletedAt" Type="Int32" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Supplies_Client" FromRole="Supplies" ToRole="Client" />
           <NavigationProperty Name="ObjectNmobles1" Relationship="Self.FK_Supplies_ObjectNmobles" FromRole="Supplies" ToRole="ObjectNmobles" />
           <NavigationProperty Name="Realtor" Relationship="Self.FK_Supplies_Realtor" FromRole="Supplies" ToRole="Realtor" />
+          <NavigationProperty Name="User" Relationship="Self.Supplies_FK" FromRole="Supplies" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -731,9 +769,11 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleId" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_UserId" FromRole="User" ToRole="Client" />
+          <NavigationProperty Name="Demand" Relationship="Self.Demand_FK" FromRole="User" ToRole="Demand" />
           <NavigationProperty Name="ObjectNmobles" Relationship="Self.FK_ObjectNmobles_User" FromRole="User" ToRole="ObjectNmobles" />
           <NavigationProperty Name="Realtor" Relationship="Self.FK_Realtor_Realtor_UserId" FromRole="User" ToRole="Realtor" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_RoleId" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Supplies" Relationship="Self.Supplies_FK" FromRole="User" ToRole="Supplies" />
         </EntityType>
         <EntityType Name="ListUsers">
           <Key>
@@ -820,6 +860,18 @@
             </Principal>
             <Dependent Role="Supplies">
               <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Demand_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="DeletedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -979,6 +1031,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Supplies_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Supplies">
+              <PropertyRef Name="DeletedAt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="eSoftEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Apartmens" EntityType="Self.Apartmens" />
           <EntitySet Name="City" EntityType="Self.City" />
@@ -1020,6 +1084,10 @@
           <AssociationSet Name="FK_Supplies_Client" Association="Self.FK_Supplies_Client">
             <End Role="Client" EntitySet="Client" />
             <End Role="Supplies" EntitySet="Supplies" />
+          </AssociationSet>
+          <AssociationSet Name="Demand_FK" Association="Self.Demand_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="Demand" EntitySet="Demand" />
           </AssociationSet>
           <AssociationSet Name="FK_Demand_Realtor" Association="Self.FK_Demand_Realtor">
             <End Role="Realtor" EntitySet="Realtor" />
@@ -1072,6 +1140,10 @@
           <AssociationSet Name="FK_User_RoleId" Association="Self.FK_User_RoleId">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="Supplies_FK" Association="Self.Supplies_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="Supplies" EntitySet="Supplies" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1126,6 +1198,7 @@
                 <ScalarProperty Name="AddressStreet" ColumnName="AddressStreet" />
                 <ScalarProperty Name="AddressHouse" ColumnName="AddressHouse" />
                 <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1231,6 +1304,7 @@
                 <ScalarProperty Name="RialtorId" ColumnName="RialtorId" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="ObjectNmobles" ColumnName="ObjectNmobles" />
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

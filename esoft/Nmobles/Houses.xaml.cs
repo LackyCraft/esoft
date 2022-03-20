@@ -20,7 +20,7 @@ namespace esoft.Nmobles
     /// </summary>
     public partial class Houses1 : Page
     {
-        List<Houses> housesList = eSoftEntities.GetContext().Houses.ToList();
+        List<Houses> housesList = eSoftEntities.GetContext().Houses.Where(i => i.ObjectNmobles.DeletedBy == null).ToList();
 
         public Houses1()
         {
@@ -29,7 +29,21 @@ namespace esoft.Nmobles
         }
         private void DeletedAt(object sender, RoutedEventArgs e)
         {
+            if (Application.Current.Resources["idUser"].ToString() == "null" && Application.Current.Resources["Role"].ToString() != "C")
+            {
+                MessageBox.Show("Warning 403\nНеобходимо автроизоваться под ролью Администратора или Риелтора");
+            }
+            else
+            {
+                ObjectNmobles editObjectNmobles = (DataGridHouses.SelectedItem as Houses).ObjectNmobles;
+                editObjectNmobles.DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
+                eSoftEntities.GetContext().SaveChanges();
+                MessageBox.Show("Запись успешгл удалена");
 
+                housesList = eSoftEntities.GetContext().Houses.Where(i => i.ObjectNmobles.DeletedBy == null).ToList();
+
+                DataGridHouses.ItemsSource = housesList;
+            }
         }
 
         private void Edit(object sender, RoutedEventArgs e)

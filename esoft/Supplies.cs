@@ -19,9 +19,11 @@ namespace esoft
         public int RialtorId { get; set; }
         public int ClientId { get; set; }
         public Nullable<int> ObjectNmobles { get; set; }
+        public Nullable<int> DeletedAt { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual ObjectNmobles ObjectNmobles1 { get; set; }
         public virtual Realtor Realtor { get; set; }
+        public virtual User User { get; set; }
     }
 }

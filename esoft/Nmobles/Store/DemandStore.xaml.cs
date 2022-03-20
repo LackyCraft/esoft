@@ -25,18 +25,34 @@ namespace esoft.Nmobles.Store
 
         private string selectedTypeId;
 
+       
+
         public DemandStore(string type)
         {
             InitializeComponent();
             selectedTypeId = type;
-            DataGridDemand.ItemsSource = eSoftEntities.GetContext().Demand.Where(i => i.TypeObjectNmobles.TypeId == type).ToList();
-            demandList = eSoftEntities.GetContext().Demand.Where(i => i.TypeObjectNmobles.TypeId == type).ToList();
+            DataGridDemand.ItemsSource = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == type || i.DeletedBy == null)).ToList();
+            demandList = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == type || i.DeletedBy == null)).ToList();
 
         }
 
         private void DeletedAt(object sender, RoutedEventArgs e)
         {
+            if (Application.Current.Resources["idUser"].ToString() == "null" && Application.Current.Resources["Role"].ToString() != "C")
+            {
+                MessageBox.Show("Warning 403\nНеобходимо автроизоваться под ролью Администратора или Риелтора");
+            }
+            else
+            {
+                Demand editDemand = (DataGridDemand.SelectedItem as Demand);
+                editDemand.DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
+                eSoftEntities.GetContext().SaveChanges();
+                MessageBox.Show("Запись успешгл удалена");
 
+                demandList = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == selectedTypeId || i.DeletedBy == null)).ToList();
+
+                DataGridDemand.ItemsSource = demandList;
+            }
         }
 
         private void Edit(object sender, RoutedEventArgs e)

@@ -25,13 +25,24 @@ namespace esoft.Nmobles.Store
         {
             InitializeComponent();
             selectedTypeId = type;
-            DataGridSupliesStore.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => i.ObjectNmobles1.TypeId == type).ToList();
-            landList = eSoftEntities.GetContext().Supplies.Where(i => i.ObjectNmobles1.TypeId == type).ToList();
+            DataGridSupliesStore.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => (i.ObjectNmobles1.TypeId == type || i.DeletedAt == null)).ToList();
+            landList = eSoftEntities.GetContext().Supplies.Where(i => (i.ObjectNmobles1.TypeId == type || i.DeletedAt == null)).ToList();
         }
 
         private void DeletedAt(object sender, RoutedEventArgs e)
         {
-
+            if (Application.Current.Resources["idUser"].ToString() == "null" && Application.Current.Resources["Role"].ToString() != "C")
+            {
+                MessageBox.Show("Warning 403\nНеобходимо автроизоваться под ролью Администратора или Риелтора");
+            }
+            else
+            {
+                (DataGridSupliesStore.SelectedItem as Supplies).DeletedAt = int.Parse(Application.Current.Resources["idUser"].ToString());
+                eSoftEntities.GetContext().SaveChanges();
+                MessageBox.Show("Запись успешгл удалена");
+                landList = eSoftEntities.GetContext().Supplies.Where(i => (i.ObjectNmobles1.TypeId == selectedTypeId || i.DeletedAt == null)).ToList();
+                DataGridSupliesStore.ItemsSource = landList;
+            }
         }
 
         private void Edit(object sender, RoutedEventArgs e)

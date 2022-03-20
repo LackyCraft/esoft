@@ -31,8 +31,8 @@ namespace esoft.Nmobles.Store
         {
             InitializeComponent();
             selectedTypeId = type;
-            DataGridDemand.ItemsSource = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == type || i.DeletedBy == null)).ToList();
-            demandList = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == type || i.DeletedBy == null)).ToList();
+            DataGridDemand.ItemsSource = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == type && i.DeletedBy == null)).ToList();
+            demandList = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == type && i.DeletedBy == null)).ToList();
 
         }
 
@@ -49,7 +49,7 @@ namespace esoft.Nmobles.Store
                 eSoftEntities.GetContext().SaveChanges();
                 MessageBox.Show("Запись успешгл удалена");
 
-                demandList = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == selectedTypeId || i.DeletedBy == null)).ToList();
+                demandList = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == selectedTypeId && i.DeletedBy == null)).ToList();
 
                 DataGridDemand.ItemsSource = demandList;
             }

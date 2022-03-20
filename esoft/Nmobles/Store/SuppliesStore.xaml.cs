@@ -25,8 +25,8 @@ namespace esoft.Nmobles.Store
         {
             InitializeComponent();
             selectedTypeId = type;
-            DataGridSupliesStore.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => (i.ObjectNmobles1.TypeId == type || i.DeletedAt == null)).ToList();
-            landList = eSoftEntities.GetContext().Supplies.Where(i => (i.ObjectNmobles1.TypeId == type || i.DeletedAt == null)).ToList();
+            DataGridSupliesStore.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => (i.ObjectNmobles1.TypeId == type && i.DeletedAt == null)).ToList();
+            landList = eSoftEntities.GetContext().Supplies.Where(i => (i.ObjectNmobles1.TypeId == type && i.DeletedAt == null)).ToList();
         }
 
         private void DeletedAt(object sender, RoutedEventArgs e)
@@ -40,7 +40,7 @@ namespace esoft.Nmobles.Store
                 (DataGridSupliesStore.SelectedItem as Supplies).DeletedAt = int.Parse(Application.Current.Resources["idUser"].ToString());
                 eSoftEntities.GetContext().SaveChanges();
                 MessageBox.Show("Запись успешгл удалена");
-                landList = eSoftEntities.GetContext().Supplies.Where(i => (i.ObjectNmobles1.TypeId == selectedTypeId || i.DeletedAt == null)).ToList();
+                landList = eSoftEntities.GetContext().Supplies.Where(i => (i.ObjectNmobles1.TypeId == selectedTypeId && i.DeletedAt == null)).ToList();
                 DataGridSupliesStore.ItemsSource = landList;
             }
         }

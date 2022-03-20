@@ -26,7 +26,7 @@
 
         <DataGrid x:Name="DataGridDemand" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="2">
             <DataGrid.Columns>
-                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Город" Binding="{Binding AddressCity}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Город" Binding="{Binding City.CityName}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Адресс улицы" Binding="{Binding AddressStreet}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Номер дома" Binding="{Binding AddressHouse}"/>
 
@@ -35,9 +35,6 @@
 
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Имя ответсвтенного реэлтора" Binding="{Binding Client.LastName}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Фамилия ответсвтенного реэлтора" Binding="{Binding Client.FirstName}"/>
-
-                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Широта" Binding="{Binding Lat}"/>
-                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Долгота" Binding="{Binding Lng}"/>
 
                 <!--
                 <DataGridTemplateColumn Width="100" Header="Редактирование">

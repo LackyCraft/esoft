@@ -154,6 +154,12 @@
     <Compile Include="Nmobles\Store\AddSupplies.xaml.cs">
       <DependentUpon>AddSupplies.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Nmobles\Store\Dale\AddDale.xaml.cs">
+      <DependentUpon>AddDale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nmobles\Store\Dale\DaleList.xaml.cs">
+      <DependentUpon>DaleList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nmobles\Store\DemandAddInStore.xaml.cs">
       <DependentUpon>DemandAddInStore.xaml</DependentUpon>
     </Compile>
@@ -291,6 +297,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Nmobles\Store\Dale\AddDale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\Dale\DaleList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Nmobles\Store\DemandAddInStore.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -393,7 +407,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Nmobles\Store\Dale\" />
     <Folder Include="RolePage\Realtor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

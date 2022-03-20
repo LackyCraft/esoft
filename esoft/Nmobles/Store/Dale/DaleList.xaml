@@ -1,0 +1,48 @@
+﻿<Page x:Class="esoft.Nmobles.Store.Dale.DaleList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:esoft.Nmobles.Store.Dale"
+      mc:Ignorable="d" 
+      Title="DaleList">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="White">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Поиск: " FontSize="18" VerticalAlignment="Center" TextAlignment="Center" Margin="15,15,0,0"/>
+                    <TextBox x:Name="TextBoxSearchBox" Width="170" HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+                <Button Width="150" Content="Поиск" Margin="15,15,0,0" Click="ButtClickButtonSearchClick" Background="{StaticResource Grey}" Foreground="{StaticResource DarkBlue}"/>
+                <Button Width="150" HorizontalAlignment="Right" Content="Добавить" Margin="15,15,0,0" Click="addDale"/>
+                <StackPanel Orientation="Horizontal"/>
+            </StackPanel>
+        </Grid>
+
+        <DataGrid x:Name="DataGridDaleList" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="2">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Тип недвижимости" Binding="{Binding TypeObjectNmobles.Type}"/>
+
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Наименование недвижимости" Binding="{Binding ObjectNmobles.Title}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Город" Binding="{Binding ObjectNmobles.City.CityName}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Адресс улицы" Binding="{Binding ObjectNmobles.AddressStreet}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Номер дома" Binding="{Binding ObjectNmobles.AddressHouse}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Номер квартиры" Binding="{Binding ObjectNmobles.AddressNumber}"/>
+
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Имя покупателя" Binding="{Binding Client.LastName}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Фамилия покупателя" Binding="{Binding Client.FirstName}"/>
+                
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Широта" Binding="{Binding ObjectNmobles.Lat}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Долгота" Binding="{Binding ObjectNmobles.Lng}"/> 
+                
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

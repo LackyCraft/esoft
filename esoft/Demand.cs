@@ -33,10 +33,12 @@ namespace esoft
         public string AddressHouse { get; set; }
         public string AddressNumber { get; set; }
         public Nullable<int> DeletedBy { get; set; }
+        public Nullable<int> DealNmobles { get; set; }
     
         public virtual City City { get; set; }
         public virtual Client Client { get; set; }
         public virtual User User { get; set; }
+        public virtual ObjectNmobles ObjectNmobles { get; set; }
         public virtual Realtor Realtor { get; set; }
         public virtual TypeObjectNmobles TypeObjectNmobles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

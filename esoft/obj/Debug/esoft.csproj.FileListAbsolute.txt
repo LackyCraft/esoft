@@ -198,3 +198,7 @@ I:\esoft\esoft\obj\Debug\Nmobles\Store\AddDemandApartamnts.g.cs
 I:\esoft\esoft\obj\Debug\Nmobles\Store\AddDemandApartamnts.baml
 I:\esoft\esoft\obj\Debug\Nmobles\Store\AddDemandLand.g.cs
 I:\esoft\esoft\obj\Debug\Nmobles\Store\AddDemandLand.baml
+I:\esoft\esoft\obj\Debug\Nmobles\Store\Dale\DaleList.g.cs
+I:\esoft\esoft\obj\Debug\Nmobles\Store\Dale\DaleList.baml
+I:\esoft\esoft\obj\Debug\Nmobles\Store\Dale\AddDale.g.cs
+I:\esoft\esoft\obj\Debug\Nmobles\Store\Dale\AddDale.baml

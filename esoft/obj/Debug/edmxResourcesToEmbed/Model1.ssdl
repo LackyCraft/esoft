@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ObjectNmoblesId" Type="int" />
     <Property Name="Floor" Type="int" />
     <Property Name="CountRooms" Type="int" />
@@ -45,6 +45,7 @@
     <Property Name="AddressHouse" Type="varchar" MaxLength="100" />
     <Property Name="AddressNumber" Type="varchar" MaxLength="100" />
     <Property Name="DeletedBy" Type="int" />
+    <Property Name="DealNmobles" Type="int" />
   </EntityType>
   <EntityType Name="DemandApartments">
     <Key>
@@ -85,7 +86,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ObjectNmoblesId" Type="int" />
     <Property Name="CountFloor" Type="int" />
     <Property Name="CountRoom" Type="int" />
@@ -113,6 +114,7 @@
     <Property Name="AddressNumber" Type="nvarchar" MaxLength="50" />
     <Property Name="idCity" Type="int" />
     <Property Name="DeletedBy" Type="int" />
+    <Property Name="IsBuy" Type="int" />
   </EntityType>
   <EntityType Name="Realtor">
     <Key>
@@ -196,6 +198,18 @@
       </Principal>
       <Dependent Role="Demand">
         <PropertyRef Name="DeletedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Demand_FK_1">
+    <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="0..1" />
+    <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ObjectNmobles">
+        <PropertyRef Name="ObjectNmoblesId" />
+      </Principal>
+      <Dependent Role="Demand">
+        <PropertyRef Name="DealNmobles" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -427,6 +441,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ObjectNmobles_FK">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ObjectNmobles">
+        <PropertyRef Name="IsBuy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="Supplies_FK">
     <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
@@ -471,6 +497,10 @@
     </EntitySet>
     <AssociationSet Name="Demand_FK" Association="Self.Demand_FK">
       <End Role="User" EntitySet="User" />
+      <End Role="Demand" EntitySet="Demand" />
+    </AssociationSet>
+    <AssociationSet Name="Demand_FK_1" Association="Self.Demand_FK_1">
+      <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
       <End Role="Demand" EntitySet="Demand" />
     </AssociationSet>
     <AssociationSet Name="FK_Apartmens_ObjectNmobles" Association="Self.FK_Apartmens_ObjectNmobles">
@@ -548,6 +578,10 @@
     <AssociationSet Name="FK_User_RoleId" Association="Self.FK_User_RoleId">
       <End Role="Role" EntitySet="Role" />
       <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="ObjectNmobles_FK" Association="Self.ObjectNmobles_FK">
+      <End Role="User" EntitySet="User" />
+      <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
     </AssociationSet>
     <AssociationSet Name="Supplies_FK" Association="Self.Supplies_FK">
       <End Role="User" EntitySet="User" />

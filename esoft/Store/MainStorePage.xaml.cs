@@ -40,6 +40,8 @@ namespace esoft.Store
             //Передаем в PayStoreMain кнопку, что бы определить какую вкладку мы открываем
             if (sender == ButtonSupplies || sender == ButtonPay)
                 FrameNmobles.NavigationService.Navigate(new PayStoreMain(sender));
+            if (sender == GoodDeal)
+                FrameNmobles.NavigationService.Navigate(new esoft.Nmobles.Store.Dale.DaleList());
 
         }
     }

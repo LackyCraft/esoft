@@ -133,8 +133,14 @@
     <Compile Include="Nmobles\Store\AddDemand.xaml.cs">
       <DependentUpon>AddDemand.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Nmobles\Store\AddDemandApartamnts.xaml.cs">
+      <DependentUpon>AddDemandApartamnts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nmobles\Store\AddDemandHouses.xaml.cs">
       <DependentUpon>AddDemandHouses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nmobles\Store\AddDemandLand.xaml.cs">
+      <DependentUpon>AddDemandLand.xaml</DependentUpon>
     </Compile>
     <Compile Include="Nmobles\Store\AddSuplisesApartaments.xaml.cs">
       <DependentUpon>AddSuplisesApartaments.xaml</DependentUpon>
@@ -257,7 +263,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Nmobles\Store\AddDemandApartamnts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Nmobles\Store\AddDemandHouses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\AddDemandLand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

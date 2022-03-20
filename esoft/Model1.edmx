@@ -39,7 +39,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MinPrice" Type="int" Nullable="false" />
           <Property Name="MaxPrice" Type="int" Nullable="false" />
           <Property Name="RealtorId" Type="int" Nullable="false" />
@@ -54,7 +54,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MinArea" Type="float" />
           <Property Name="MaxArea" Type="float" />
           <Property Name="MinRooms" Type="int" />
@@ -67,7 +67,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idDemand" Type="int" Nullable="false" />
           <Property Name="MinFloors" Type="int" />
           <Property Name="MaxFloors" Type="int" />
@@ -80,9 +80,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="MinArea" Type="varchar" MaxLength="100" />
-          <Property Name="MaxArea" Type="varchar" MaxLength="100" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinArea" Type="float" />
+          <Property Name="MaxArea" Type="float" />
           <Property Name="DemandId" Type="int" />
         </EntityType>
         <EntityType Name="Houses">
@@ -570,7 +570,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MinPrice" Type="Int32" Nullable="false" />
           <Property Name="MaxPrice" Type="Int32" Nullable="false" />
           <Property Name="RealtorId" Type="Int32" Nullable="false" />
@@ -592,7 +592,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MinArea" Type="Double" />
           <Property Name="MaxArea" Type="Double" />
           <Property Name="MinRooms" Type="Int32" />
@@ -606,7 +606,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idDemand" Type="Int32" Nullable="false" />
           <Property Name="MinFloors" Type="Int32" />
           <Property Name="MaxFloors" Type="Int32" />
@@ -620,9 +620,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="MinArea" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MaxArea" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MinArea" Type="Double" />
+          <Property Name="MaxArea" Type="Double" />
           <Property Name="DemandId" Type="Int32" />
           <NavigationProperty Name="Demand" Relationship="Self.FK_DemandLand_Demand" FromRole="DemandLand" ToRole="Demand" />
         </EntityType>

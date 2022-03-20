@@ -5,8 +5,59 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:esoft.Nmobles.Store"
       mc:Ignorable="d">
+    <Grid Margin="0,80,0,0">
 
-    <Grid>
+        <StackPanel VerticalAlignment="Top" Margin="15" Grid.Column="0">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Город:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <ComboBox x:Name="ComboBoxCity" DisplayMemberPath="CityName" SelectedValuePath="CityId" Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Улица:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxStreet"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Дом:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxHouses"  Width="200" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock  Text="Минимальная этажность*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxMinFloor" Text="1" Width="200" HorizontalAlignment="Right" TextChanged="TextChangedTextBoxFloor"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock  Text="Максимальная этажность*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox x:Name="TextBoxMaxFloor" Text="1" Width="200" HorizontalAlignment="Right" TextChanged="TextChangedTextBoxFloor"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Мин кол-во. комнат*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox Text="1" x:Name="TextBoxMinCountRooms"  Width="200" HorizontalAlignment="Right" TextChanged="TextChangedTextBoxCountRooms"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Максимальное кол-во. комнат*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox Text="1" x:Name="TextBoxMaxCountRooms"  Width="200" HorizontalAlignment="Right" TextChanged="TextChangedTextBoxCountRooms"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Минимальная площадь площадь (м3)*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox Text="100" x:Name="TextBoxMinArea"  Width="200" HorizontalAlignment="Right" TextChanged="TextChangedTextBoxArea"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                <TextBlock Text="Максимальная площадь площадь (м3)*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <TextBox Text="100" x:Name="TextBoxMaxArea"  Width="200" HorizontalAlignment="Right" TextChanged="TextChangedTextBoxArea"/>
+            </StackPanel>
+
+            <TextBlock x:Name="TextBlockWarning"  Text="" VerticalAlignment="Bottom" FontWeight="Bold" TextAlignment="Center" Foreground="{StaticResource Warning}" TextWrapping="Wrap"  HorizontalAlignment="Center" FontSize="14"/>
+            <Button Click="сheckWarning" x:Name="ButtonAddSupline" Content="Добавить потребность"/>
+
+        </StackPanel>
         
     </Grid>
 </Page>

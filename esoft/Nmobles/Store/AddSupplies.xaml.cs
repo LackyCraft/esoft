@@ -76,8 +76,13 @@ namespace esoft.Nmobles.Store
                 MainInfoSupplies.Children.Remove(ButtonAddSupline);
                 MainInfoSupplies.IsEnabled = false;
                 ButtonBackgroundMainInfoSuppline.Background = (Brush)Application.Current.FindResource("DarkGrey1");
-
+                if(ComboBoxTypeNmobles.SelectedValue.ToString() == "A")
                 FrameTypeInfo.Content = new AddSuplisesApartaments(TextBoxTitle.Text, ComboBoxTypeNmobles.SelectedValue.ToString(), int.Parse(TextBoxPrice.Text), int.Parse(ComboBoxRealtor.SelectedValue.ToString()), int.Parse(ComboBoxClient.SelectedValue.ToString()), float.Parse(TextBoxLat.Text), float.Parse(TextBoxLng.Text));
+                if (ComboBoxTypeNmobles.SelectedValue.ToString() == "L")
+                    FrameTypeInfo.Content = new AddSuplisesLand(TextBoxTitle.Text, ComboBoxTypeNmobles.SelectedValue.ToString(), int.Parse(TextBoxPrice.Text), int.Parse(ComboBoxRealtor.SelectedValue.ToString()), int.Parse(ComboBoxClient.SelectedValue.ToString()), float.Parse(TextBoxLat.Text), float.Parse(TextBoxLng.Text));
+                if (ComboBoxTypeNmobles.SelectedValue.ToString() == "H")
+                    FrameTypeInfo.Content = new AddSuplisesHouses(TextBoxTitle.Text, ComboBoxTypeNmobles.SelectedValue.ToString(), int.Parse(TextBoxPrice.Text), int.Parse(ComboBoxRealtor.SelectedValue.ToString()), int.Parse(ComboBoxClient.SelectedValue.ToString()), float.Parse(TextBoxLat.Text), float.Parse(TextBoxLng.Text));
+
             }
         }
 

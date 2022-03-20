@@ -21,7 +21,7 @@ namespace esoft.Nmobles.Store
     public partial class DemandStore : Page
     {
 
-        List<Demand> landList;
+        List<Demand> demandList;
 
         private string selectedTypeId;
 
@@ -30,7 +30,7 @@ namespace esoft.Nmobles.Store
             InitializeComponent();
             selectedTypeId = type;
             DataGridDemand.ItemsSource = eSoftEntities.GetContext().Demand.Where(i => i.TypeObjectNmobles.TypeId == type).ToList();
-            landList = eSoftEntities.GetContext().Demand.Where(i => i.TypeObjectNmobles.TypeId == type).ToList();
+            demandList = eSoftEntities.GetContext().Demand.Where(i => i.TypeObjectNmobles.TypeId == type).ToList();
 
         }
 
@@ -46,18 +46,18 @@ namespace esoft.Nmobles.Store
 
         private void addSupplies(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new DemandAddInStore());
+            this.NavigationService.Navigate(new DemandAddInStore(selectedTypeId));
         }
 
         private void ButtClickButtonSearchClick(object sender, RoutedEventArgs e)
         {
-            /*List<Supplies> filterList = landList;
+            List<Demand> filterList = demandList;
             if (TextBoxSearchBox.Text.ToString().Length > 1)
             {
-                filterList = filterList.Where(i => (i.ObjectNmobles1.Title.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles1.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles1.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles1.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles1.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()))).ToList();
+                filterList = filterList.Where(i => ((i.MinPrice).ToString().Contains(TextBoxSearchBox.Text.ToString()) || (i.MaxPrice).ToString().Contains(TextBoxSearchBox.Text.ToString()) || i.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || i.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.Client.LastName.Contains(TextBoxSearchBox.Text.ToString()) || i.Client.FirstName.Contains(TextBoxSearchBox.Text.ToString()))).ToList();
             }
 
-            DataGridLandsStore.ItemsSource = filterList;*/
+            DataGridDemand.ItemsSource = filterList;
         }
 
     }

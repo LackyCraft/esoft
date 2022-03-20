@@ -24,7 +24,7 @@
             </StackPanel>
         </Grid>
 
-        <DataGrid x:Name="DataGridLandsStore" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="2">
+        <DataGrid x:Name="DataGridSupliesStore" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="2">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Наименование недвижимости" Binding="{Binding ObjectNmobles1.Title}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Город" Binding="{Binding ObjectNmobles1.City.CityName}"/>

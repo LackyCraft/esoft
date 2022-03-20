@@ -15,8 +15,8 @@ namespace esoft
     public partial class DemandLand
     {
         public int id { get; set; }
-        public string MinArea { get; set; }
-        public string MaxArea { get; set; }
+        public Nullable<double> MinArea { get; set; }
+        public Nullable<double> MaxArea { get; set; }
         public Nullable<int> DemandId { get; set; }
     
         public virtual Demand Demand { get; set; }

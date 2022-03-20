@@ -19,8 +19,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Click="ScrolPage" x:Name="ButtonSupplies" Content="Потребности" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold" Margin="15,0,15,0"/>
-            <Button Click="ScrolPage" x:Name="ButtonPay" Content="Предложения" Grid.Column="1" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold" Margin="15,0,15,0"/>
+            <Button Click="ScrolPage" x:Name="ButtonSupplies" Content="Предложения" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold" Margin="15,0,15,0"/>
+            <Button Click="ScrolPage" x:Name="ButtonPay" Content="Потребности" Grid.Column="1" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold" Margin="15,0,15,0"/>
             <Button Click="ScrolPage" x:Name="GoodDeal" Content="Проведенные сделки" Grid.Column="2" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold" Margin="15,0,15,0"/>
         </Grid>
 

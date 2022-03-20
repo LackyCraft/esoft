@@ -25,7 +25,7 @@ namespace esoft.Nmobles.Store
         {
             InitializeComponent();
             selectedTypeId = type;
-            DataGridLandsStore.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => i.ObjectNmobles1.TypeId == type).ToList();
+            DataGridSupliesStore.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => i.ObjectNmobles1.TypeId == type).ToList();
             landList = eSoftEntities.GetContext().Supplies.Where(i => i.ObjectNmobles1.TypeId == type).ToList();
         }
 
@@ -52,7 +52,7 @@ namespace esoft.Nmobles.Store
                 filterList = filterList.Where(i => (i.ObjectNmobles1.Title.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles1.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles1.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles1.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles1.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) )).ToList();
             }
 
-            DataGridLandsStore.ItemsSource = filterList;
+            DataGridSupliesStore.ItemsSource = filterList;
         }
     }
 }

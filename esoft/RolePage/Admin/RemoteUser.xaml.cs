@@ -21,12 +21,13 @@ namespace esoft.RolePage.Admin
     public partial class RemoteUser : Page
     {
 
-        List<ListUsers> ListUsers = eSoftEntities.GetContext().ListUsers.ToList();
+        List<ListUsers> ListUsersAll;
 
         public RemoteUser()
         {
             InitializeComponent();
-            dataGridUserList.ItemsSource = ListUsers;
+            ListUsersAll = eSoftEntities.GetContext().ListUsers.ToList();
+            dataGridUserList.ItemsSource = ListUsersAll;
         }
 
         private void EditUser(object sender, RoutedEventArgs e)
@@ -40,21 +41,52 @@ namespace esoft.RolePage.Admin
 
         }
 
-        private void ButtClickButtonSearcon_Click(object sender, RoutedEventArgs e)
-        {
-            List<ListUsers> filterUserList = ListUsers;
-            if (TextBoxSearchBox.Text.ToString().Length > 1)
-            {
-                filterUserList = filterUserList.Where(i => (i.LastName.Contains(TextBoxSearchBox.Text.ToString()) || i.FirstName.Contains(TextBoxSearchBox.Text.ToString()) || i.MidlName.Contains(TextBoxSearchBox.Text.ToString()))).ToList();
-                //filterUserList = filterUserList.Where(i => (i.Phone.Contains(TextBoxSearchBox.Text.ToString()) || i.Email.Contains(TextBoxSearchBox.Text.ToString()) || i.Role.Contains(TextBoxSearchBox.Text.ToString()) )).ToList();
-            }
-            dataGridUserList.ItemsSource = filterUserList;
-        }
-
         private void clickAddUser(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("/RolePage/Admin/addUser.xaml", UriKind.Relative));
         }
-        
+
+        private void ChangedTextBoxSearchBox(object sender, TextChangedEventArgs e)
+        {
+            List<ListUsers> filterListUser = new List<ListUsers>();//new List<ListUsers>();
+            if (TextBoxSearchBox.Text.Length > 1)
+            {
+                foreach (ListUsers users in ListUsersAll)
+                {
+                    if (LevenshteinDistance(users.LastName.ToString(), TextBoxSearchBox.Text) <= 2 || LevenshteinDistance(users.FirstName.ToString(), TextBoxSearchBox.Text) <= 2 || LevenshteinDistance(users.MidlName.ToString(), TextBoxSearchBox.Text) <= 2 || users.LastName.ToString().Contains(TextBoxSearchBox.Text.ToString()) || users.FirstName.ToString().Contains(TextBoxSearchBox.Text.ToString()) || users.MidlName.ToString().Contains(TextBoxSearchBox.Text.ToString()))
+                        filterListUser.Add(users);
+                }
+            }
+            else
+            {
+                filterListUser = ListUsersAll;
+            }
+
+            dataGridUserList.ItemsSource = filterListUser;
+
+        }
+
+        public static int LevenshteinDistance(string string1, string string2)
+        {
+            if (string1 == null) string1 = "";
+            if (string2 == null) string2 = "";
+            int diff;
+            int[,] m = new int[string1.Length + 1, string2.Length + 1];
+
+            for (int i = 0; i <= string1.Length; i++) { m[i, 0] = i; }
+            for (int j = 0; j <= string2.Length; j++) { m[0, j] = j; }
+
+            for (int i = 1; i <= string1.Length; i++)
+            {
+                for (int j = 1; j <= string2.Length; j++)
+                {
+                    diff = (string1[i - 1] == string2[j - 1]) ? 0 : 1;
+
+                    m[i, j] = Math.Min(Math.Min(m[i - 1, j] + 1, m[i, j - 1] + 1), m[i - 1, j - 1] + diff);
+                }
+            }
+            return m[string1.Length, string2.Length];
+        }
+
     }
 }

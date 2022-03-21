@@ -37,14 +37,20 @@ namespace esoft.Nmobles
             }
             else
             {
-                ObjectNmobles editObjectNmobles = (DataGridLands.SelectedItem as Land).ObjectNmobles;
-                editObjectNmobles.DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
-                eSoftEntities.GetContext().SaveChanges();
-                MessageBox.Show("Запись успешгл удалена");
+                if (MessageBox.Show("Вы точно хотите удалить данную запись?",
+                "Save file",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    ObjectNmobles editObjectNmobles = (DataGridLands.SelectedItem as Land).ObjectNmobles;
+                    editObjectNmobles.DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
+                    eSoftEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Запись успешно удалена");
 
-                HousesList = eSoftEntities.GetContext().Land.Where(i => i.ObjectNmobles.DeletedBy == null).ToList();
+                    HousesList = eSoftEntities.GetContext().Land.Where(i => i.ObjectNmobles.DeletedBy == null).ToList();
 
-                DataGridLands.ItemsSource = HousesList;
+                    DataGridLands.ItemsSource = HousesList;
+                }
             }
         }
 
@@ -61,15 +67,46 @@ namespace esoft.Nmobles
             }
         }
 
-        private void ButtClickButtonSearcon_Click(object sender, RoutedEventArgs e)
+        private void ChangedTextBoxSearchBox(object sender, TextChangedEventArgs e)
         {
-            List<Land> filterList = HousesList;
-            if (TextBoxSearchBox.Text.ToString().Length > 1)
+            List<Land> filterList = new List<Land>();//new List<ListUsers>();
+            if (TextBoxSearchBox.Text.Length > 1)
             {
-                filterList = filterList.Where(i => (i.ObjectNmobles.Title.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.Area.ToString().Contains(TextBoxSearchBox.Text.ToString()))).ToList();
+                foreach (Land lands in HousesList)
+                {
+                    if (LevenshteinDistance(lands.ObjectNmobles.Title.ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || LevenshteinDistance(lands.ObjectNmobles.City.CityName.ToString(), TextBoxSearchBox.Text.ToString()) <=2 || LevenshteinDistance(lands.ObjectNmobles.AddressStreet.ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || LevenshteinDistance(lands.ObjectNmobles.AddressHouse.ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || LevenshteinDistance(lands.ObjectNmobles.AddressHouse.ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || LevenshteinDistance(lands.Area.ToString().ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || lands.ObjectNmobles.Title.Contains(TextBoxSearchBox.Text.ToString()) || lands.ObjectNmobles.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || lands.ObjectNmobles.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || lands.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || lands.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || lands.Area.ToString().Contains(TextBoxSearchBox.Text.ToString()))
+                        filterList.Add(lands);
+                }
+            }
+            else
+            {
+                filterList = HousesList;
             }
 
             DataGridLands.ItemsSource = filterList;
+
+        }
+
+        public static int LevenshteinDistance(string string1, string string2)
+        {
+            if (string1 == null) string1 = "";
+            if (string2 == null) string2 = "";
+            int diff;
+            int[,] m = new int[string1.Length + 1, string2.Length + 1];
+
+            for (int i = 0; i <= string1.Length; i++) { m[i, 0] = i; }
+            for (int j = 0; j <= string2.Length; j++) { m[0, j] = j; }
+
+            for (int i = 1; i <= string1.Length; i++)
+            {
+                for (int j = 1; j <= string2.Length; j++)
+                {
+                    diff = (string1[i - 1] == string2[j - 1]) ? 0 : 1;
+
+                    m[i, j] = Math.Min(Math.Min(m[i - 1, j] + 1, m[i, j - 1] + 1), m[i - 1, j - 1] + diff);
+                }
+            }
+            return m[string1.Length, string2.Length];
         }
 
     }

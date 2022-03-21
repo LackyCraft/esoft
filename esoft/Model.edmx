@@ -175,6 +175,7 @@
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleId" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DeletedBy" Type="int" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "eSoft.dbo.ListUsers" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -470,6 +471,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="User_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User1" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище eSoftModelContainer">
           <EntitySet Name="Apartmens" EntityType="Self.Apartmens" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
@@ -591,6 +604,10 @@
           <AssociationSet Name="Supplies_FK" Association="Self.Supplies_FK">
             <End Role="User" EntitySet="User" />
             <End Role="Supplies" EntitySet="Supplies" />
+          </AssociationSet>
+          <AssociationSet Name="User_FK" Association="Self.User_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="User1" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -807,6 +824,7 @@
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleId" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DeletedBy" Type="Int32" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_UserId" FromRole="User" ToRole="Client" />
           <NavigationProperty Name="Demand" Relationship="Self.Demand_FK" FromRole="User" ToRole="Demand" />
           <NavigationProperty Name="ObjectNmobles" Relationship="Self.FK_ObjectNmobles_User" FromRole="User" ToRole="ObjectNmobles" />
@@ -814,6 +832,8 @@
           <NavigationProperty Name="Realtor" Relationship="Self.FK_Realtor_Realtor_UserId" FromRole="User" ToRole="Realtor" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_RoleId" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Supplies" Relationship="Self.Supplies_FK" FromRole="User" ToRole="Supplies" />
+          <NavigationProperty Name="User1" Relationship="Self.User_FK" FromRole="User" ToRole="User1" />
+          <NavigationProperty Name="User2" Relationship="Self.User_FK" FromRole="User1" ToRole="User" />
         </EntityType>
         <EntityType Name="ListUsers">
           <Key>
@@ -1107,6 +1127,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="User_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User1" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="eSoftEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Apartmens" EntityType="Self.Apartmens" />
           <EntitySet Name="City" EntityType="Self.City" />
@@ -1216,6 +1248,10 @@
           <AssociationSet Name="Supplies_FK" Association="Self.Supplies_FK">
             <End Role="User" EntitySet="User" />
             <End Role="Supplies" EntitySet="Supplies" />
+          </AssociationSet>
+          <AssociationSet Name="User_FK" Association="Self.User_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="User1" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1408,6 +1444,7 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -36,14 +36,20 @@ namespace esoft.Nmobles
             }
             else
             {
-                ObjectNmobles editObjectNmobles = (DataGridApartaments.SelectedItem as Apartmens).ObjectNmobles;
-                editObjectNmobles.DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
-                eSoftEntities.GetContext().SaveChanges();
-                MessageBox.Show("Запись успешгл удалена");
+                if (MessageBox.Show("Вы точно хотите удалить данную запись?",
+                    "Save file",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    ObjectNmobles editObjectNmobles = (DataGridApartaments.SelectedItem as Apartmens).ObjectNmobles;
+                    editObjectNmobles.DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
+                    eSoftEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Запись успешно удалена");
 
-                ApartmensList = eSoftEntities.GetContext().Apartmens.Where(i => i.ObjectNmobles.DeletedBy == null).ToList();
+                    ApartmensList = eSoftEntities.GetContext().Apartmens.Where(i => i.ObjectNmobles.DeletedBy == null).ToList();
 
-                DataGridApartaments.ItemsSource = ApartmensList;
+                    DataGridApartaments.ItemsSource = ApartmensList;
+                }
             }
         }
 
@@ -60,15 +66,45 @@ namespace esoft.Nmobles
             }
         }
 
-        private void ButtClickButtonSearcon_Click(object sender, RoutedEventArgs e)
+        private void ChangedTextBoxSearchBox(object sender, TextChangedEventArgs e)
         {
-            List<Apartmens> filterList = ApartmensList;
-            if (TextBoxSearchBox.Text.ToString().Length > 1)
+            List<Apartmens> filterList = new List<Apartmens>();//new List<ListUsers>();
+            if (TextBoxSearchBox.Text.Length > 1)
             {
-                filterList = filterList.Where(i => (i.ObjectNmobles.Title.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.ObjectNmobles.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.Floor.ToString().Contains(TextBoxSearchBox.Text.ToString()) || i.CountRooms.ToString().Contains(TextBoxSearchBox.Text.ToString()) || i.Area.ToString().Contains(TextBoxSearchBox.Text.ToString()))).ToList();
+                foreach (Apartmens apartmens in ApartmensList)
+                {
+                    if (LevenshteinDistance(apartmens.ObjectNmobles.Title.ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || LevenshteinDistance(apartmens.ObjectNmobles.City.CityName.ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || LevenshteinDistance(apartmens.ObjectNmobles.AddressStreet.ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || LevenshteinDistance(apartmens.ObjectNmobles.AddressHouse.ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || LevenshteinDistance(apartmens.ObjectNmobles.AddressHouse.ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || LevenshteinDistance(apartmens.Area.ToString().ToString(), TextBoxSearchBox.Text.ToString()) <= 2 || apartmens.ObjectNmobles.Title.Contains(TextBoxSearchBox.Text.ToString()) || apartmens.ObjectNmobles.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || apartmens.ObjectNmobles.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || apartmens.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || apartmens.ObjectNmobles.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || apartmens.Area.ToString().Contains(TextBoxSearchBox.Text.ToString()))
+                        filterList.Add(apartmens);
+                }
             }
-
+            else
+            {
+                filterList = ApartmensList;
+            }
             DataGridApartaments.ItemsSource = filterList;
+        }
+
+
+        public static int LevenshteinDistance(string string1, string string2)
+        {
+            if (string1 == null) string1 = "";
+            if (string2 == null) string2 = "";
+            int diff;
+            int[,] m = new int[string1.Length + 1, string2.Length + 1];
+
+            for (int i = 0; i <= string1.Length; i++) { m[i, 0] = i; }
+            for (int j = 0; j <= string2.Length; j++) { m[0, j] = j; }
+
+            for (int i = 1; i <= string1.Length; i++)
+            {
+                for (int j = 1; j <= string2.Length; j++)
+                {
+                    diff = (string1[i - 1] == string2[j - 1]) ? 0 : 1;
+
+                    m[i, j] = Math.Min(Math.Min(m[i - 1, j] + 1, m[i, j - 1] + 1), m[i - 1, j - 1] + diff);
+                }
+            }
+            return m[string1.Length, string2.Length];
         }
 
     }

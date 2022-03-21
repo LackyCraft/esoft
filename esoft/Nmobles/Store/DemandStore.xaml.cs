@@ -44,14 +44,20 @@ namespace esoft.Nmobles.Store
             }
             else
             {
-                Demand editDemand = (DataGridDemand.SelectedItem as Demand);
-                editDemand.DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
-                eSoftEntities.GetContext().SaveChanges();
-                MessageBox.Show("Запись успешгл удалена");
+                if (MessageBox.Show("Вы точно хотите удалить данную запись?",
+                    "Save file",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    Demand editDemand = (DataGridDemand.SelectedItem as Demand);
+                    editDemand.DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
+                    eSoftEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Запись успешно удалена");
 
-                demandList = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == selectedTypeId && i.DeletedBy == null && i.DealNmobles == null)).ToList();
+                    demandList = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == selectedTypeId && i.DeletedBy == null && i.DealNmobles == null)).ToList();
 
-                DataGridDemand.ItemsSource = demandList;
+                    DataGridDemand.ItemsSource = demandList;
+                }
             }
         }
 
@@ -65,14 +71,23 @@ namespace esoft.Nmobles.Store
             this.NavigationService.Navigate(new DemandAddInStore(selectedTypeId));
         }
 
-        private void ButtClickButtonSearchClick(object sender, RoutedEventArgs e)
+        private void ChangedTextBoxSearchBox(object sender, TextChangedEventArgs e)
         {
-            List<Demand> filterList = demandList;
-            if (TextBoxSearchBox.Text.ToString().Length > 1)
+            List<Demand> filterList = new List<Demand>();//new List<ListUsers>();
+            if (TextBoxSearchBox.Text.Length > 1)
             {
-                filterList = filterList.Where(i => ((i.MinPrice).ToString().Contains(TextBoxSearchBox.Text.ToString()) || (i.MaxPrice).ToString().Contains(TextBoxSearchBox.Text.ToString()) || i.City.CityName.Contains(TextBoxSearchBox.Text.ToString()) || i.AddressStreet.Contains(TextBoxSearchBox.Text.ToString()) || i.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.AddressHouse.Contains(TextBoxSearchBox.Text.ToString()) || i.Client.LastName.Contains(TextBoxSearchBox.Text.ToString()) || i.Client.FirstName.Contains(TextBoxSearchBox.Text.ToString()))).ToList();
+                foreach (Demand demands in demandList)
+                {
+                    if ((demands.MinPrice).ToString().Contains(TextBoxSearchBox.Text.ToString()) || (demands.MaxPrice).ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.City.CityName.ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.AddressStreet.ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.Client.LastName.ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.Client.FirstName.ToString().Contains(TextBoxSearchBox.Text.ToString()))
+                    {
+                        filterList.Add(demands);
+                    }
+                }
             }
-
+            else
+            {
+                filterList = demandList;
+            }
             DataGridDemand.ItemsSource = filterList;
         }
 

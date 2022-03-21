@@ -20,9 +20,8 @@
         <Grid Grid.Row="1" Background="White">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Поиск: " FontSize="18" VerticalAlignment="Center" TextAlignment="Center" Margin="15,15,0,0"/>
-                <TextBox x:Name="TextBoxSearchBox" Width="170" HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Center"/>
-                <Button Width="150" Content="Поиск" Margin="15,15,0,0" Click="ButtClickButtonSearcon_Click" Background="{StaticResource Grey}" Foreground="{StaticResource DarkBlue}"/>
-            </StackPanel>
+                <TextBox x:Name="TextBoxSearchBox" TextChanged="ChangedTextBoxSearchBox" Width="170" HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
             <Button Width="150" Content="Добавить пользователя" Margin="15,15,15,0" Click="clickAddUser" HorizontalAlignment="Right"/>
         </Grid>
 

@@ -12,8 +12,8 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/danger.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/icon%20with%20name.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/icon.svg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/success.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/warning.svg")]
 

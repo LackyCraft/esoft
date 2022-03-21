@@ -26,7 +26,7 @@ namespace esoft.RolePage.Admin
         public RemoteUser()
         {
             InitializeComponent();
-            ListUsersAll = eSoftEntities.GetContext().ListUsers.ToList();
+            ListUsersAll = eSoftEntities.GetContext().ListUsers.Where(i => i.DeletedBy == null).ToList();
             dataGridUserList.ItemsSource = ListUsersAll;
         }
 
@@ -48,7 +48,7 @@ namespace esoft.RolePage.Admin
 
         private void ChangedTextBoxSearchBox(object sender, TextChangedEventArgs e)
         {
-            List<ListUsers> filterListUser = new List<ListUsers>();//new List<ListUsers>();
+            List<ListUsers> filterListUser = new List<ListUsers>();
             if (TextBoxSearchBox.Text.Length > 1)
             {
                 foreach (ListUsers users in ListUsersAll)
@@ -64,6 +64,29 @@ namespace esoft.RolePage.Admin
 
             dataGridUserList.ItemsSource = filterListUser;
 
+        }
+
+        private void DeletedAt(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.Resources["idUser"].ToString() == "null" && Application.Current.Resources["Role"].ToString() != "C")
+            {
+                MessageBox.Show("Warning 403\nНеобходимо автроизоваться под ролью Администратора или Риелтора");
+            }
+            else
+            {
+                if (MessageBox.Show("Вы точно хотите удалить данную запись?",
+                    "Save file",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    int selectedDellIdUser = (dataGridUserList.SelectedItem as ListUsers).UserId;
+                    (eSoftEntities.GetContext().User.Where(i => i.id == selectedDellIdUser).ToList()[0] as User).DeletedBy = int.Parse(Application.Current.Resources["idUser"].ToString());
+                    eSoftEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Запись успешно удалена");
+                    ListUsersAll = eSoftEntities.GetContext().ListUsers.Where(i => i.DeletedBy == null).ToList();
+                    dataGridUserList.ItemsSource = ListUsersAll;
+                }
+            }
         }
 
         public static int LevenshteinDistance(string string1, string string2)

@@ -14,6 +14,7 @@ namespace esoft
     
     public partial class ListUsers
     {
+        public Nullable<int> DeletedBy { get; set; }
         public string login { get; set; }
         public int UserId { get; set; }
         public string LastName { get; set; }

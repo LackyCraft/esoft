@@ -73,12 +73,12 @@ namespace esoft.Nmobles.Store
 
         private void ChangedTextBoxSearchBox(object sender, TextChangedEventArgs e)
         {
-            List<Demand> filterList = new List<Demand>();//new List<ListUsers>();
+            List<Demand> filterList = new List<Demand>();
             if (TextBoxSearchBox.Text.Length > 1)
             {
                 foreach (Demand demands in demandList)
                 {
-                    if ((demands.MinPrice).ToString().Contains(TextBoxSearchBox.Text.ToString()) || (demands.MaxPrice).ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.City.CityName.ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.AddressStreet.ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.Client.LastName.ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.Client.FirstName.ToString().Contains(TextBoxSearchBox.Text.ToString()))
+                    if ((demands.MinPrice).ToString().Contains(TextBoxSearchBox.Text.ToString()) || (demands.MaxPrice).ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.City.CityName.ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.Client.LastName.ToString().Contains(TextBoxSearchBox.Text.ToString()) || demands.Client.FirstName.ToString().Contains(TextBoxSearchBox.Text.ToString()))
                     {
                         filterList.Add(demands);
                     }

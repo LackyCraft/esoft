@@ -29,8 +29,8 @@ namespace esoft.RolePage.Client
             
             int idUser = int.Parse(Application.Current.Resources["idUser"].ToString());
             entityEditUser = eSoftEntities.GetContext().User.Where(i => i.id == idUser).ToList()[0];
-            
-            if(entityEditUser.RoleId == "C")
+
+            if (entityEditUser.RoleId == "C")
             {
                 TextBlockLabel.Text = "Карточка клиента";
                 var clientInfo = eSoftEntities.GetContext().Client.Where(i => i.UserId == entityEditUser.id).ToList()[0];
@@ -41,6 +41,9 @@ namespace esoft.RolePage.Client
                 TextBoxNumberPhone.Text = clientInfo.Phone;
                 TextBoxEmail.Text = clientInfo.Email;
                 PasswordBoxOldPassword.Password = entityEditUser.password;
+
+                DataGridSupliesStore.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => (i.ClientId == clientInfo.Id && i.DeletedAt == null && i.ObjectNmobles1.IsBuy == null)).ToList();
+                DataGridDemand.ItemsSource = eSoftEntities.GetContext().Demand.Where(i => (i.ClientId == clientInfo.Id && i.DeletedBy == null && i.DealNmobles == null)).ToList();
             }
             if (entityEditUser.RoleId == "R")
             {
@@ -64,10 +67,10 @@ namespace esoft.RolePage.Client
                 TextBoxEmail.Background = (Brush)Application.Current.MainWindow.FindResource("Grey");
 
                 PasswordBoxOldPassword.Password = entityEditUser.password;
-            }
 
-            //TextBoxLogin.Text = userInfo.login;
-            //TextBoxLastName.Text = 
+                DataGridSupliesStore.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => (i.RialtorId == RieltorInfo.id && i.DeletedAt == null && i.ObjectNmobles1.IsBuy == null)).ToList();
+                DataGridDemand.ItemsSource = eSoftEntities.GetContext().Demand.Where(i => (i.RealtorId == RieltorInfo.id && i.DeletedBy == null && i.DealNmobles == null)).ToList();
+            }
         }
 
         private void SaveEditUser(object sender, RoutedEventArgs e)

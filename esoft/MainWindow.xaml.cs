@@ -67,16 +67,13 @@ namespace esoft
             Store.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
 
             //Если пользователь не админ и авторизован, то кнопку Личной карточки так же красим в Normal
-            if (Application.Current.Resources["Role"] != "null" && Application.Current.Resources["Role"] != "A")
+            if (Application.Current.Resources["Role"].ToString() != "null" && Application.Current.Resources["Role"].ToString() != "A")
+            {
                 ClientInfo.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
+            }
 
             //Красим в Hover нажатую кнопку
             (sender as Button).Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey1");
-
-
-            
-
-                
 
             //Buttons menu
             if (sender == ClientInfo)

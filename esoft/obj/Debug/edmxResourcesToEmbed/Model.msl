@@ -192,6 +192,7 @@
     <EntitySetMapping Name="ListUsers">
       <EntityTypeMapping TypeName="eSoftModel.ListUsers">
         <MappingFragment StoreEntitySet="ListUsers">
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
           <ScalarProperty Name="login" ColumnName="login" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />

@@ -226,6 +226,7 @@
       <PropertyRef Name="UserId" />
       <PropertyRef Name="RoleId" />
     </Key>
+    <Property Name="DeletedBy" Type="Int32" />
     <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

@@ -7,12 +7,65 @@
       mc:Ignorable="d"
       Title="UserInfo">
 
-    <Grid HorizontalAlignment="Right" Background="{StaticResource Grey}">
+    <Grid HorizontalAlignment="Right">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="406" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="348" Margin="0,9">
+
+        <Grid Grid.Column="0" Margin="0,0,15,0" Grid.RowSpan="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid  Grid.Row="0" Margin="0,0,0,15">
+                <TextBlock Text="Мои предложения" HorizontalAlignment="Center"/>
+                <DataGrid x:Name="DataGridSupliesStore" Margin="15,15,0,0" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Тип недвижимости" Binding="{Binding ObjectNmobles1.TypeObjectNmobles.Type}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Наименование недвижимости" Binding="{Binding ObjectNmobles1.Title}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Город" Binding="{Binding ObjectNmobles1.City.CityName}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Адресс улицы" Binding="{Binding ObjectNmobles1.AddressStreet}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Номер дома" Binding="{Binding ObjectNmobles1.AddressHouse}"/>
+
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Цена" Binding="{Binding Price}"/>
+
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Имя ответсвтенного реэлтора" Binding="{Binding Client.LastName}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Фамилия ответсвтенного реэлтора" Binding="{Binding Client.FirstName}"/>
+
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Широта" Binding="{Binding Lat}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Долгота" Binding="{Binding Lng}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+
+            <Grid  Grid.Row="1">
+                <TextBlock Text="Мои потребности" HorizontalAlignment="Center"/>
+                <DataGrid x:Name="DataGridDemand" Margin="15,15,0,0" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="2">
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Тип недвижимости" Binding="{Binding TypeObjectNmobles.Type}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Город" Binding="{Binding City.CityName}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Адресс улицы" Binding="{Binding AddressStreet}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Номер дома" Binding="{Binding AddressHouse}"/>
+
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Минимальная цена" Binding="{Binding MinPrice}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Максимальная цена" Binding="{Binding MaxPrice}"/>
+
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Имя ответсвтенного реэлтора" Binding="{Binding Client.LastName}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*" Header="Фамилия ответсвтенного реэлтора" Binding="{Binding Client.FirstName}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+
+        </Grid>
+        
+        
+        <Button Background="{StaticResource Grey}" Height="Auto" Grid.Column="1" Grid.RowSpan="2"/>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="348" Margin="29,9" Grid.RowSpan="2" >
             <Image Source="/Image/logo.png" Height="80"/>
             <TextBlock x:Name="TextBlockLabel" Text="Карточка клиента" TextAlignment="Center" FontWeight="Bold" FontSize="22" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,15">
@@ -57,7 +110,7 @@
                 <TextBlock Text="Введите новый пароль:" VerticalAlignment="Center" Margin="0,0,15,0"/>
                 <PasswordBox x:Name="PasswordBoxNewPassword"  Width="200" HorizontalAlignment="Right"/>
             </StackPanel>
-            
+
             <TextBlock x:Name="TextBlockWarning"  Text="" FontWeight="Bold" TextAlignment="Center" Foreground="{StaticResource Warning}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
             <Button Content="Сохранить изменения" Click="SaveEditUser"/>
 

@@ -44,7 +44,6 @@
                 <Button x:Name="RemoteNmobles" Click="scrolPage" Content="Управление недвижимостью" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold"/>
                 <Button x:Name="Store" Click="scrolPage"  Content="Продажи" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold"/>
                 <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
-                <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
             </StackPanel>
         </Grid>
 

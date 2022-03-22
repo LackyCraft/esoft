@@ -33,7 +33,6 @@ namespace esoft.Nmobles.Store
             selectedTypeId = type;
             DataGridDemand.ItemsSource = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == type && i.DeletedBy == null && i.DealNmobles == null)).ToList();
             demandList = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == type && i.DeletedBy == null && i.DealNmobles == null)).ToList();
-
         }
 
         private void DeletedAt(object sender, RoutedEventArgs e)
@@ -63,6 +62,9 @@ namespace esoft.Nmobles.Store
 
         private void Edit(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show((DataGridDemand.SelectedItem as Demand).id.ToString());
+            esoft.Nmobles.Edit.EditHousesWindow editDemandPage =  new esoft.Nmobles.Edit.EditHousesWindow("1");
+            this.NavigationService.Navigate(editDemandPage);
 
         }
 

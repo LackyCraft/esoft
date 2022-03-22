@@ -288,3 +288,7 @@ D:\esoft\esoft\obj\Debug\esoft.csproj.CoreCompileInputs.cache
 D:\esoft\esoft\obj\Debug\esoft.csproj.CopyComplete
 D:\esoft\esoft\obj\Debug\Nmobles\Edit\editSuplies.g.cs
 D:\esoft\esoft\obj\Debug\Nmobles\Edit\editSuplies.baml
+D:\esoft\esoft\obj\Debug\Nmobles\Edit\EditDemandNmobles.g.cs
+D:\esoft\esoft\obj\Debug\Nmobles\Edit\EditDemandNmobles.baml
+D:\esoft\esoft\obj\Debug\Nmobles\Edit\editItemDemandNmobles.g.cs
+D:\esoft\esoft\obj\Debug\Nmobles\Edit\editItemDemandNmobles.baml

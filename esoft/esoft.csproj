@@ -118,11 +118,11 @@
     <Compile Include="Nmobles\Edit\EditApartamentWindows.xaml.cs">
       <DependentUpon>EditApartamentWindows.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Nmobles\Edit\editDemand.xaml.cs">
-      <DependentUpon>editDemand.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Nmobles\Edit\EditHousesWindow.xaml.cs">
       <DependentUpon>EditHousesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nmobles\Edit\editItemDemandNmobles.xaml.cs">
+      <DependentUpon>editItemDemandNmobles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Nmobles\Edit\editLandWindows.xaml.cs">
       <DependentUpon>editLandWindows.xaml</DependentUpon>
@@ -257,11 +257,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Nmobles\Edit\editDemand.xaml">
+    <Page Include="Nmobles\Edit\EditHousesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Nmobles\Edit\EditHousesWindow.xaml">
+    <Page Include="Nmobles\Edit\editItemDemandNmobles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

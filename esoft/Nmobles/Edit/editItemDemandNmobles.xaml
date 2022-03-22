@@ -1,4 +1,4 @@
-﻿<Page x:Class="esoft.Nmobles.Edit.editSuplies"
+﻿<Page x:Class="esoft.Nmobles.Edit.editItemDemandNmobles"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -22,18 +22,18 @@
             <StackPanel VerticalAlignment="Top" Margin="15" x:Name="MainInfoSupplies">
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                    <TextBlock Text="Наименование*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                    <TextBox x:Name="TextBoxTitle"  Width="200" HorizontalAlignment="Right" TextChanged="changedCheck"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
                     <TextBlock Text="Тип недвижимости*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
                     <ComboBox x:Name="ComboBoxTypeNmobles"  Width="200" HorizontalAlignment="Right" DisplayMemberPath="Type" IsEnabled="False" SelectedValuePath="TypeId"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                    <TextBlock Text="Укажите цену*:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                    <TextBox x:Name="TextBoxPrice" Text="0"  Width="200" HorizontalAlignment="Right" TextChanged="changedCheck"/>
+                    <TextBlock Text="Укажите минимальную цену:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBox x:Name="TextBoxPriceMin" Text="0"  Width="200" HorizontalAlignment="Right" TextChanged="changedCheck"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
+                    <TextBlock Text="Укажите максимальную цену:" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBox x:Name="TextBoxPriceMax" Text="0"  Width="200" HorizontalAlignment="Right" TextChanged="changedCheck"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
@@ -75,14 +75,6 @@
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,17,0,15">
-                    <TextBlock Text="Широта:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                    <TextBox Text="0" x:Name="TextBoxLat"  Width="200" HorizontalAlignment="Right"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,15">
-                    <TextBlock Text="Долгота:" VerticalAlignment="Center" Margin="0,0,15,0"/>
-                    <TextBox Text="0" x:Name="TextBoxLng"  Width="200" HorizontalAlignment="Right"/>
-                </StackPanel>
                 <TextBlock Text="Поля, обозначеные * - являются обязательными к заполнению" HorizontalAlignment="Left" Margin="15,0,0,10" TextWrapping="Wrap" Foreground="{StaticResource DarkGrey3}"/>
 
                 <TextBlock x:Name="TextBlockWarning"  Text="" FontWeight="Bold" TextAlignment="Center" Foreground="{StaticResource Warning}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
@@ -93,6 +85,5 @@
         <Grid Grid.Column="1">
             <Frame x:Name="FrameTypeInfo" NavigationUIVisibility="Hidden"></Frame>
         </Grid>
-
     </Grid>
 </Page>

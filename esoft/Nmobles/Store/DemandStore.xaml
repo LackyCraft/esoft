@@ -35,7 +35,6 @@
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Имя ответсвтенного реэлтора" Binding="{Binding Client.LastName}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Фамилия ответсвтенного реэлтора" Binding="{Binding Client.FirstName}"/>
 
-                <!--
                 <DataGridTemplateColumn Width="100" Header="Редактирование">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -43,7 +42,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                -->
+                
                 <DataGridTemplateColumn Width="100" Header="Удаление">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

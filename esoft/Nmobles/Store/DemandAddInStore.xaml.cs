@@ -59,7 +59,7 @@ namespace esoft.Nmobles.Store
             {
                 TextBlockWarning.Text += "\nНе выбран ответственный риэлтор";
             }
-            if (int.Parse(TextBoxPriceMax.Text) > int.Parse(TextBoxPriceMin.Text))
+            if (int.Parse(TextBoxPriceMax.Text) < int.Parse(TextBoxPriceMin.Text))
             {
                 TextBlockWarning.Text += "\nМасимальная цена должна быть больше минимальной";
                 TextBoxPriceMax.Background = (Brush)Application.Current.MainWindow.FindResource("Warning");

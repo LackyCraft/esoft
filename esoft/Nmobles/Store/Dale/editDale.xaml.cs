@@ -15,16 +15,29 @@ using System.Windows.Shapes;
 
 namespace esoft.Nmobles.Store.Dale
 {
-    /// <summary>
-    /// Логика взаимодействия для AddDale.xaml
-    /// </summary>
-    public partial class AddDale : Page
+    public partial class editDale : Page
     {
-        public AddDale()
+
+        private Demand entityEditDemandItem;
+
+        public editDale(Demand editDemandItem)
         {
             InitializeComponent();
             ComboBoxType.ItemsSource = eSoftEntities.GetContext().TypeObjectNmobles.ToList();
+            ComboBoxType.SelectedValue = editDemandItem.ObjectNmobles.TypeId;
+
+            ComboBoxDemand.ItemsSource = eSoftEntities.GetContext().Demand.Where(i => (i.TypeObjectNmobles.TypeId == ComboBoxType.SelectedValue.ToString() && i.DeletedBy == null && i.DealNmobles == null || i.id == editDemandItem.id)).ToList();
+            ComboBoxDemand.SelectedValue = editDemandItem.id;
+
+            int IdselectedSuplies = eSoftEntities.GetContext().Supplies.Where(i => i.ObjectNmobles1.ObjectNmoblesId == editDemandItem.ObjectNmobles.ObjectNmoblesId).ToList()[0].id;
+            ComboBoxSupply.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => (i.id == IdselectedSuplies || i.DeletedAt == null && i.ObjectNmobles1.IsBuy == null && i.ObjectNmobles1.TypeId == ComboBoxType.SelectedValue.ToString())).ToList();
+
             
+            ComboBoxSupply.SelectedValue = IdselectedSuplies;
+
+
+
+            entityEditDemandItem = editDemandItem;
         }
 
         private void ClickButtonSearch(object sender, RoutedEventArgs e)
@@ -46,13 +59,11 @@ namespace esoft.Nmobles.Store.Dale
                 ButtonSearch.IsEnabled = true;
                 ButtonSearch.Background = (Brush)Application.Current.MainWindow.FindResource("Blue");
             }
-            //Supplies supplies1 = new Supplies();
-
-            //ComboBoxSupplice.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => (i.ObjectNmobles1.IsBuy == null && i.ObjectNmobles1.TypeId == ComboBoxType.SelectedValue.ToString())).ToList();
         }
+
         private void ChangedComboBoxDemand(object sender, SelectionChangedEventArgs e)
         {
-            if(ComboBoxDemand.SelectedIndex == -1)
+            if (ComboBoxDemand.SelectedIndex == -1)
             {
                 DataGridDemandList.ItemsSource = null;
                 ComboBoxSupply.IsEnabled = false;
@@ -67,34 +78,35 @@ namespace esoft.Nmobles.Store.Dale
 
         private void ButtonAddDeal_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                Supplies editSupplies = ComboBoxSupply.SelectedItem as Supplies;
-            editSupplies.ObjectNmobles1.IsBuy = int.Parse(Application.Current.Resources["idUser"].ToString());
+                
+                Supplies editSupplies = eSoftEntities.GetContext().Supplies.Where(i => i.ObjectNmobles1.ObjectNmoblesId == entityEditDemandItem.ObjectNmobles.ObjectNmoblesId).ToList()[0] as Supplies;
+                editSupplies.ObjectNmobles1.IsBuy = int.Parse(Application.Current.Resources["idUser"].ToString());
 
-            Demand editDemand = ComboBoxDemand.SelectedItem as Demand;
-            editDemand.DealNmobles = editSupplies.ObjectNmobles1.ObjectNmoblesId;
+                Demand editDemand = ComboBoxDemand.SelectedItem as Demand;
+                entityEditDemandItem.DealNmobles = editSupplies.ObjectNmobles1.ObjectNmoblesId;
 
-            eSoftEntities.GetContext().SaveChanges();
+                eSoftEntities.GetContext().SaveChanges();
 
-            MessageBox.Show("Сделка проведена успешно");
-            this.Content = null;
-            this.NavigationService.Navigate(new DaleList());
+                MessageBox.Show("Сделка проведена успешно");
+
+                this.Content = null;
+                this.NavigationService.Navigate(new DaleList());
             }
             catch
             {
                 MessageBox.Show("Error 505\nПроизошла непредвидиная ошибка.\n Не удалось подключиться к базе данных.\nПерезапустите приложение.");
             }
 
-}
+        }
 
         private void ChangedComboBoxSupply(object sender, SelectionChangedEventArgs e)
         {
-            if(ComboBoxSupply.SelectedIndex != -1)
+            if (ComboBoxSupply.SelectedIndex != -1)
             {
-            int id = int.Parse(ComboBoxSupply.SelectedValue.ToString());
-            DataGridSupplyList.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => i.id == id).ToList();
+                int id = int.Parse(ComboBoxSupply.SelectedValue.ToString());
+                DataGridSupplyList.ItemsSource = eSoftEntities.GetContext().Supplies.Where(i => i.id == id).ToList();
             }
         }
     }

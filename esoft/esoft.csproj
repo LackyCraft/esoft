@@ -169,6 +169,9 @@
     <Compile Include="Nmobles\Store\Dale\DaleList.xaml.cs">
       <DependentUpon>DaleList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Nmobles\Store\Dale\editDale.xaml.cs">
+      <DependentUpon>editDale.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Nmobles\Store\DemandAddInStore.xaml.cs">
       <DependentUpon>DemandAddInStore.xaml</DependentUpon>
     </Compile>
@@ -322,6 +325,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Nmobles\Store\Dale\DaleList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nmobles\Store\Dale\editDale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

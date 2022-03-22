@@ -58,8 +58,8 @@ namespace esoft.Nmobles.Store
             }
             if (TextBlockWarning.Text == "")
             {
-                //try
-                //{
+                try
+                {
 
                     Demand newDemand = new Demand();
                     newDemand.MinPrice = PriceMinDemand;
@@ -86,11 +86,11 @@ namespace esoft.Nmobles.Store
 
                     MessageBox.Show("Сохранение прошло успешно");
                     this.Content = null;
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Error 505\nПроизошла непредвидиная ошибка.\n Не удалось подключиться к базе данных.\nПерезапустите приложение.");
-                //}
+                }
+                catch
+                {
+                    MessageBox.Show("Error 505\nПроизошла непредвидиная ошибка.\n Не удалось подключиться к базе данных.\nПерезапустите приложение.");
+                }
 
 
             }

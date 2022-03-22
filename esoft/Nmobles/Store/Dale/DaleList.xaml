@@ -17,9 +17,8 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Поиск: " FontSize="18" VerticalAlignment="Center" TextAlignment="Center" Margin="15,15,0,0"/>
-                    <TextBox x:Name="TextBoxSearchBox" Width="170" HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Center"/>
+                    <TextBox x:Name="TextBoxSearchBox" TextChanged="ChangedTextBoxSearchBox" Width="170" HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
-                <Button Width="150" Content="Поиск" Margin="15,15,0,0" Click="ButtClickButtonSearchClick" Background="{StaticResource Grey}" Foreground="{StaticResource DarkBlue}"/>
                 <Button Width="150" HorizontalAlignment="Right" Content="Добавить" Margin="15,15,0,0" Click="addDale"/>
                 <StackPanel Orientation="Horizontal"/>
             </StackPanel>
@@ -40,8 +39,21 @@
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Фамилия покупателя" Binding="{Binding Client.FirstName}"/>
                 
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Широта" Binding="{Binding ObjectNmobles.Lat}"/>
-                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Долгота" Binding="{Binding ObjectNmobles.Lng}"/> 
-                
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Долгота" Binding="{Binding ObjectNmobles.Lng}"/>
+                <DataGridTemplateColumn Width="100" Header="Редактирование">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Uid="{Binding UserId}" Width="100" Click="Edit"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="100" Header="Удаление">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Удалить" Uid="{Binding id}" Width="100" Click="DeletedAt" Background="{StaticResource LightRed}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

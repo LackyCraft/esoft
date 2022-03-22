@@ -94,6 +94,7 @@ namespace esoft.Nmobles.Store
 
                     MessageBox.Show("Сохранение прошло успешно");
                     this.Content = null;
+                    SuppliesStore newEdit = new SuppliesStore(TypeNmoblesSuplises);
                 }
                 catch
                 {

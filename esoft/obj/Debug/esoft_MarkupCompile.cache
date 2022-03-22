@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\esoft\esoft\App.xaml
-34-691886121
+35-283975853
 8-66471411
-581861522539
+59-172295934
 18-102558039
-Auth.xaml;DictionaryStyle.xaml;MainWindow.xaml;Nmobles\ApartamentsList.xaml;Nmobles\Edit\EditApartamentWindows.xaml;Nmobles\Edit\EditHousesWindow.xaml;Nmobles\Edit\editItemDemandNmobles.xaml;Nmobles\Edit\editLandWindows.xaml;Nmobles\Edit\editSuplies.xaml;Nmobles\Houses.xaml;Nmobles\LandList.xaml;Nmobles\RemoteNmobles.xaml;Nmobles\Store\AddDemand.xaml;Nmobles\Store\AddDemandApartamnts.xaml;Nmobles\Store\AddDemandHouses.xaml;Nmobles\Store\AddDemandLand.xaml;Nmobles\Store\AddSuplisesApartaments.xaml;Nmobles\Store\AddSuplisesHouses.xaml;Nmobles\Store\AddSuplisesLand.xaml;Nmobles\Store\AddSupplies.xaml;Nmobles\Store\Dale\AddDale.xaml;Nmobles\Store\Dale\DaleList.xaml;Nmobles\Store\DemandAddInStore.xaml;Nmobles\Store\DemandStore.xaml;Nmobles\Store\SuppliesStore.xaml;Register.xaml;RolePage\Admin\addUser.xaml;RolePage\Admin\EditUserWindow.xaml;RolePage\Admin\RegisterRieltor.xaml;RolePage\Admin\RemoteUser.xaml;RolePage\Client\UserInfo.xaml;ShareDale.xaml;Store\MainStorePage.xaml;Store\PayStoreMain.xaml;
+Auth.xaml;DictionaryStyle.xaml;MainWindow.xaml;Nmobles\ApartamentsList.xaml;Nmobles\Edit\EditApartamentWindows.xaml;Nmobles\Edit\EditHousesWindow.xaml;Nmobles\Edit\editItemDemandNmobles.xaml;Nmobles\Edit\editLandWindows.xaml;Nmobles\Edit\editSuplies.xaml;Nmobles\Houses.xaml;Nmobles\LandList.xaml;Nmobles\RemoteNmobles.xaml;Nmobles\Store\AddDemand.xaml;Nmobles\Store\AddDemandApartamnts.xaml;Nmobles\Store\AddDemandHouses.xaml;Nmobles\Store\AddDemandLand.xaml;Nmobles\Store\AddSuplisesApartaments.xaml;Nmobles\Store\AddSuplisesHouses.xaml;Nmobles\Store\AddSuplisesLand.xaml;Nmobles\Store\AddSupplies.xaml;Nmobles\Store\Dale\AddDale.xaml;Nmobles\Store\Dale\DaleList.xaml;Nmobles\Store\Dale\editDale.xaml;Nmobles\Store\DemandAddInStore.xaml;Nmobles\Store\DemandStore.xaml;Nmobles\Store\SuppliesStore.xaml;Register.xaml;RolePage\Admin\addUser.xaml;RolePage\Admin\EditUserWindow.xaml;RolePage\Admin\RegisterRieltor.xaml;RolePage\Admin\RemoteUser.xaml;RolePage\Client\UserInfo.xaml;ShareDale.xaml;Store\MainStorePage.xaml;Store\PayStoreMain.xaml;
 
-True
+False
 

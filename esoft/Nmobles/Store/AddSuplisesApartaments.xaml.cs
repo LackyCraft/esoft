@@ -56,8 +56,8 @@ namespace esoft.Nmobles.Store
             }
             if(TextBlockWarning.Text == "")
             {
-                //try
-                //{
+                try
+                {
                 ObjectNmobles newobjectNmobles = new ObjectNmobles();
                 newobjectNmobles.Title = TitleSuplises;
                 newobjectNmobles.Lng = lngSuplises;
@@ -93,11 +93,11 @@ namespace esoft.Nmobles.Store
 
                 MessageBox.Show("Сохранение прошло успешно");
                 this.Content = null;
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Error 505\nПроизошла непредвидиная ошибка.\n Не удалось подключиться к базе данных.\nПерезапустите приложение.");
-                //}
+                }
+                catch
+                {
+                    MessageBox.Show("Error 505\nПроизошла непредвидиная ошибка.\n Не удалось подключиться к базе данных.\nПерезапустите приложение.");
+                }
 
 
             }

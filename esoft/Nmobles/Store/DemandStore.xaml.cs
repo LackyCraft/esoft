@@ -62,8 +62,8 @@ namespace esoft.Nmobles.Store
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show((DataGridDemand.SelectedItem as Demand).id.ToString());
-            esoft.Nmobles.Edit.EditHousesWindow editDemandPage =  new esoft.Nmobles.Edit.EditHousesWindow("1");
+
+            Edit.editItemDemandNmobles editDemandPage =  new Edit.editItemDemandNmobles(DataGridDemand.SelectedItem as Demand);
             this.NavigationService.Navigate(editDemandPage);
 
         }

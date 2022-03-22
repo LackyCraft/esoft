@@ -65,6 +65,7 @@ namespace esoft
             //Перекраска кнопок меню. Нажатая в Hover не нажатые в Normal
             RemoteNmobles.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
             Store.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
+            DealShare.Background = (Brush)Application.Current.MainWindow.FindResource("DarkGrey");
 
             //Если пользователь не админ и авторизован, то кнопку Личной карточки так же красим в Normal
             if (Application.Current.Resources["Role"].ToString() != "null" && Application.Current.Resources["Role"].ToString() != "A")

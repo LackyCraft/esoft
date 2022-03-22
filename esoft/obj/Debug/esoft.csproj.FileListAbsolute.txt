@@ -286,3 +286,5 @@ D:\esoft\esoft\obj\Debug\esoft.Properties.Resources.resources
 D:\esoft\esoft\obj\Debug\esoft.csproj.GenerateResource.cache
 D:\esoft\esoft\obj\Debug\esoft.csproj.CoreCompileInputs.cache
 D:\esoft\esoft\obj\Debug\esoft.csproj.CopyComplete
+D:\esoft\esoft\obj\Debug\Nmobles\Edit\editSuplies.g.cs
+D:\esoft\esoft\obj\Debug\Nmobles\Edit\editSuplies.baml

@@ -53,7 +53,9 @@ namespace esoft.Nmobles.Store
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-
+                esoft.Nmobles.Edit.editSuplies editSupliesItem = new esoft.Nmobles.Edit.editSuplies(DataGridSupliesStore.SelectedItem as Supplies);
+                this.NavigationService.Navigate(editSupliesItem);
+                
         }
 
         private void addSupplies(object sender, RoutedEventArgs e)

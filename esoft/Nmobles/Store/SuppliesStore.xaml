@@ -37,14 +37,14 @@
 
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Широта" Binding="{Binding Lat}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Долгота" Binding="{Binding Lng}"/>
-<!--
+
                 <DataGridTemplateColumn Width="100" Header="Редактирование">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="Редактировать" Uid="{Binding UserId}" Width="100" Click="Edit"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn> -->
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="100" Header="Удаление">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -43,7 +43,7 @@
                 <Button x:Name="ClientInfo" Click="scrolPage"  Content="Личная карточка" Foreground="{StaticResource DarkGrey}"  Background="{StaticResource Grey}" FontWeight="Bold" IsEnabled="False"/>
                 <Button x:Name="RemoteNmobles" Click="scrolPage" Content="Управление недвижимостью" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold"/>
                 <Button x:Name="Store" Click="scrolPage"  Content="Продажи" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold"/>
-                <Button Background="{StaticResource Grey}" BorderBrush="{StaticResource DarkGrey}"/>
+                <Button x:Name="DealShare" Click="scrolPage" Content="Отчисления и комиссии" Foreground="{StaticResource DarkGrey3}"  Background="{StaticResource DarkGrey}" FontWeight="Bold"/>
             </StackPanel>
         </Grid>
 

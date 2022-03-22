@@ -12,7 +12,7 @@ namespace esoft
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class eSoftEntities : DbContext
     {
 
@@ -53,6 +53,7 @@ namespace esoft
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeObjectNmobles> TypeObjectNmobles { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Analizis> Analizis { get; set; }
         public virtual DbSet<ListUsers> ListUsers { get; set; }
     }
 }

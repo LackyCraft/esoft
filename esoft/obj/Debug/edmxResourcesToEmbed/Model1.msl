@@ -185,12 +185,44 @@
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Analizis">
+      <EntityTypeMapping TypeName="eSoftModel.Analizis">
+        <MappingFragment StoreEntitySet="Analizis">
+          <ScalarProperty Name="ObjectNmoblesId" ColumnName="ObjectNmoblesId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="AddressStreet" ColumnName="AddressStreet" />
+          <ScalarProperty Name="AddressHouse" ColumnName="AddressHouse" />
+          <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+          <ScalarProperty Name="idCity" ColumnName="idCity" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="IsBuy" ColumnName="IsBuy" />
+          <ScalarProperty Name="BuyClient" ColumnName="BuyClient" />
+          <ScalarProperty Name="BuyRealtorId" ColumnName="BuyRealtorId" />
+          <ScalarProperty Name="PayClientId" ColumnName="PayClientId" />
+          <ScalarProperty Name="PayRialtorId" ColumnName="PayRialtorId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="PriceCompany" ColumnName="PriceCompany" />
+          <ScalarProperty Name="NamePayClient" ColumnName="NamePayClient" />
+          <ScalarProperty Name="NameBuyClient" ColumnName="NameBuyClient" />
+          <ScalarProperty Name="NamePayRealtor" ColumnName="NamePayRealtor" />
+          <ScalarProperty Name="NamBuyRealtor" ColumnName="NamBuyRealtor" />
+          <ScalarProperty Name="ClientShare" ColumnName="ClientShare" />
+          <ScalarProperty Name="BuyRieltorShare" ColumnName="BuyRieltorShare" />
+          <ScalarProperty Name="PayRieltorShare" ColumnName="PayRieltorShare" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ListUsers">
       <EntityTypeMapping TypeName="eSoftModel.ListUsers">
         <MappingFragment StoreEntitySet="ListUsers">
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
           <ScalarProperty Name="login" ColumnName="login" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />

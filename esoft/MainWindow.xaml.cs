@@ -82,6 +82,8 @@ namespace esoft
                 MainFrame.NavigationService.Navigate(new Uri("/Nmobles/RemoteNmobles.xaml", UriKind.Relative));
             if (sender == Store)
                 MainFrame.NavigationService.Navigate(new Uri("/Store/MainStorePage.xaml", UriKind.Relative));
+            if (sender == DealShare)
+                MainFrame.NavigationService.Navigate(new Uri("/ShareDale.xaml", UriKind.Relative));
 
         }
     }

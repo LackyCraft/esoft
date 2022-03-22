@@ -178,6 +178,46 @@
           <Property Name="DeletedBy" Type="int" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "eSoft.dbo.Analizis" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Analizis">
+          <Key>
+            <PropertyRef Name="ObjectNmoblesId" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="TypeId" />
+            <PropertyRef Name="BuyClient" />
+            <PropertyRef Name="BuyRealtorId" />
+            <PropertyRef Name="PayClientId" />
+            <PropertyRef Name="PayRialtorId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="NamePayRealtor" />
+            <PropertyRef Name="NamBuyRealtor" />
+          </Key>
+          <Property Name="ObjectNmoblesId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lng" Type="float" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="TypeId" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AddressStreet" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressHouse" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="idCity" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="IsBuy" Type="int" />
+          <Property Name="BuyClient" Type="int" Nullable="false" />
+          <Property Name="BuyRealtorId" Type="int" Nullable="false" />
+          <Property Name="PayClientId" Type="int" Nullable="false" />
+          <Property Name="PayRialtorId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="PriceCompany" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="NamePayClient" Type="nvarchar" MaxLength="253" />
+          <Property Name="NameBuyClient" Type="nvarchar" MaxLength="253" />
+          <Property Name="NamePayRealtor" Type="nvarchar" MaxLength="152" Nullable="false" />
+          <Property Name="NamBuyRealtor" Type="nvarchar" MaxLength="152" Nullable="false" />
+          <Property Name="ClientShare" Type="numeric" Precision="13" Scale="2" />
+          <Property Name="BuyRieltorShare" Type="numeric" Precision="13" Scale="2" />
+          <Property Name="PayRieltorShare" Type="numeric" Precision="13" Scale="2" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "eSoft.dbo.ListUsers" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="ListUsers">
           <Key>
@@ -448,6 +488,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User1" Type="Self.User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="ObjectNmobles_FK">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="ObjectNmobles" Type="Self.ObjectNmobles" Multiplicity="*" />
@@ -472,18 +524,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="User_FK">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="User1" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="User1">
-              <PropertyRef Name="DeletedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище eSoftModelContainer">
           <EntitySet Name="Apartmens" EntityType="Self.Apartmens" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
@@ -501,6 +541,34 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeObjectNmobles" EntityType="Self.TypeObjectNmobles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Analizis" EntityType="Self.Analizis" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Analizis].[ObjectNmoblesId] AS [ObjectNmoblesId], 
+    [Analizis].[Title] AS [Title], 
+    [Analizis].[Lng] AS [Lng], 
+    [Analizis].[Lat] AS [Lat], 
+    [Analizis].[TypeId] AS [TypeId], 
+    [Analizis].[AddressStreet] AS [AddressStreet], 
+    [Analizis].[AddressHouse] AS [AddressHouse], 
+    [Analizis].[AddressNumber] AS [AddressNumber], 
+    [Analizis].[idCity] AS [idCity], 
+    [Analizis].[DeletedBy] AS [DeletedBy], 
+    [Analizis].[IsBuy] AS [IsBuy], 
+    [Analizis].[BuyClient] AS [BuyClient], 
+    [Analizis].[BuyRealtorId] AS [BuyRealtorId], 
+    [Analizis].[PayClientId] AS [PayClientId], 
+    [Analizis].[PayRialtorId] AS [PayRialtorId], 
+    [Analizis].[Price] AS [Price], 
+    [Analizis].[PriceCompany] AS [PriceCompany], 
+    [Analizis].[NamePayClient] AS [NamePayClient], 
+    [Analizis].[NameBuyClient] AS [NameBuyClient], 
+    [Analizis].[NamePayRealtor] AS [NamePayRealtor], 
+    [Analizis].[NamBuyRealtor] AS [NamBuyRealtor], 
+    [Analizis].[ClientShare] AS [ClientShare], 
+    [Analizis].[BuyRieltorShare] AS [BuyRieltorShare], 
+    [Analizis].[PayRieltorShare] AS [PayRieltorShare]
+    FROM [dbo].[Analizis] AS [Analizis]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="ListUsers" EntityType="Self.ListUsers" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ListUsers].[DeletedBy] AS [DeletedBy], 
@@ -599,6 +667,10 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User1" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="ObjectNmobles_FK" Association="Self.ObjectNmobles_FK">
             <End Role="User" EntitySet="User" />
             <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
@@ -606,10 +678,6 @@
           <AssociationSet Name="Supplies_FK" Association="Self.Supplies_FK">
             <End Role="User" EntitySet="User" />
             <End Role="Supplies" EntitySet="Supplies" />
-          </AssociationSet>
-          <AssociationSet Name="User_FK" Association="Self.User_FK">
-            <End Role="User" EntitySet="User" />
-            <End Role="User1" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -834,8 +902,46 @@
           <NavigationProperty Name="Realtor" Relationship="Self.FK_Realtor_Realtor_UserId" FromRole="User" ToRole="Realtor" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_RoleId" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Supplies" Relationship="Self.Supplies_FK" FromRole="User" ToRole="Supplies" />
-          <NavigationProperty Name="User1" Relationship="Self.User_FK" FromRole="User" ToRole="User1" />
-          <NavigationProperty Name="User2" Relationship="Self.User_FK" FromRole="User1" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_User_User" FromRole="User" ToRole="User1" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_User_User" FromRole="User1" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Analizis">
+          <Key>
+            <PropertyRef Name="ObjectNmoblesId" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="TypeId" />
+            <PropertyRef Name="BuyClient" />
+            <PropertyRef Name="BuyRealtorId" />
+            <PropertyRef Name="PayClientId" />
+            <PropertyRef Name="PayRialtorId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="NamePayRealtor" />
+            <PropertyRef Name="NamBuyRealtor" />
+          </Key>
+          <Property Name="ObjectNmoblesId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lng" Type="Double" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="TypeId" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AddressStreet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressHouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idCity" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="IsBuy" Type="Int32" />
+          <Property Name="BuyClient" Type="Int32" Nullable="false" />
+          <Property Name="BuyRealtorId" Type="Int32" Nullable="false" />
+          <Property Name="PayClientId" Type="Int32" Nullable="false" />
+          <Property Name="PayRialtorId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="PriceCompany" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="NamePayClient" Type="String" MaxLength="253" FixedLength="false" Unicode="true" />
+          <Property Name="NameBuyClient" Type="String" MaxLength="253" FixedLength="false" Unicode="true" />
+          <Property Name="NamePayRealtor" Type="String" MaxLength="152" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NamBuyRealtor" Type="String" MaxLength="152" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientShare" Type="Decimal" Precision="13" Scale="2" />
+          <Property Name="BuyRieltorShare" Type="Decimal" Precision="13" Scale="2" />
+          <Property Name="PayRieltorShare" Type="Decimal" Precision="13" Scale="2" />
         </EntityType>
         <EntityType Name="ListUsers">
           <Key>
@@ -1130,15 +1236,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="User_FK">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="User1" Type="Self.User" Multiplicity="*" />
+        <Association Name="FK_User_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User1" Type="Self.User" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="User1">
-              <PropertyRef Name="DeletedBy" />
+              <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1159,6 +1265,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TypeObjectNmobles" EntityType="Self.TypeObjectNmobles" />
           <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Analizis" EntityType="Self.Analizis" />
           <EntitySet Name="ListUsers" EntityType="Self.ListUsers" />
           <AssociationSet Name="FK_Land_ObjectNmobles" Association="Self.FK_Land_ObjectNmobles">
             <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
@@ -1252,7 +1359,7 @@
             <End Role="User" EntitySet="User" />
             <End Role="Supplies" EntitySet="Supplies" />
           </AssociationSet>
-          <AssociationSet Name="User_FK" Association="Self.User_FK">
+          <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
             <End Role="User" EntitySet="User" />
             <End Role="User1" EntitySet="User" />
           </AssociationSet>
@@ -1448,6 +1555,36 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Analizis">
+            <EntityTypeMapping TypeName="eSoftModel.Analizis">
+              <MappingFragment StoreEntitySet="Analizis">
+                <ScalarProperty Name="ObjectNmoblesId" ColumnName="ObjectNmoblesId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="AddressStreet" ColumnName="AddressStreet" />
+                <ScalarProperty Name="AddressHouse" ColumnName="AddressHouse" />
+                <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+                <ScalarProperty Name="idCity" ColumnName="idCity" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsBuy" ColumnName="IsBuy" />
+                <ScalarProperty Name="BuyClient" ColumnName="BuyClient" />
+                <ScalarProperty Name="BuyRealtorId" ColumnName="BuyRealtorId" />
+                <ScalarProperty Name="PayClientId" ColumnName="PayClientId" />
+                <ScalarProperty Name="PayRialtorId" ColumnName="PayRialtorId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PriceCompany" ColumnName="PriceCompany" />
+                <ScalarProperty Name="NamePayClient" ColumnName="NamePayClient" />
+                <ScalarProperty Name="NameBuyClient" ColumnName="NameBuyClient" />
+                <ScalarProperty Name="NamePayRealtor" ColumnName="NamePayRealtor" />
+                <ScalarProperty Name="NamBuyRealtor" ColumnName="NamBuyRealtor" />
+                <ScalarProperty Name="ClientShare" ColumnName="ClientShare" />
+                <ScalarProperty Name="BuyRieltorShare" ColumnName="BuyRieltorShare" />
+                <ScalarProperty Name="PayRieltorShare" ColumnName="PayRieltorShare" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

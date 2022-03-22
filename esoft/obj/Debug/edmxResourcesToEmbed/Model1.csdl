@@ -209,6 +209,7 @@
     <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RoleId" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DeletedBy" Type="Int32" />
     <NavigationProperty Name="Client" Relationship="Self.FK_Client_UserId" FromRole="User" ToRole="Client" />
     <NavigationProperty Name="Demand" Relationship="Self.Demand_FK" FromRole="User" ToRole="Demand" />
     <NavigationProperty Name="ObjectNmobles" Relationship="Self.FK_ObjectNmobles_User" FromRole="User" ToRole="ObjectNmobles" />
@@ -216,6 +217,46 @@
     <NavigationProperty Name="Realtor" Relationship="Self.FK_Realtor_Realtor_UserId" FromRole="User" ToRole="Realtor" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_RoleId" FromRole="User" ToRole="Role" />
     <NavigationProperty Name="Supplies" Relationship="Self.Supplies_FK" FromRole="User" ToRole="Supplies" />
+    <NavigationProperty Name="User1" Relationship="Self.FK_User_User" FromRole="User" ToRole="User1" />
+    <NavigationProperty Name="User2" Relationship="Self.FK_User_User" FromRole="User1" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Analizis">
+    <Key>
+      <PropertyRef Name="ObjectNmoblesId" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="TypeId" />
+      <PropertyRef Name="BuyClient" />
+      <PropertyRef Name="BuyRealtorId" />
+      <PropertyRef Name="PayClientId" />
+      <PropertyRef Name="PayRialtorId" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="NamePayRealtor" />
+      <PropertyRef Name="NamBuyRealtor" />
+    </Key>
+    <Property Name="ObjectNmoblesId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Lng" Type="Double" />
+    <Property Name="Lat" Type="Double" />
+    <Property Name="TypeId" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="AddressStreet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddressHouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddressNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idCity" Type="Int32" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="IsBuy" Type="Int32" />
+    <Property Name="BuyClient" Type="Int32" Nullable="false" />
+    <Property Name="BuyRealtorId" Type="Int32" Nullable="false" />
+    <Property Name="PayClientId" Type="Int32" Nullable="false" />
+    <Property Name="PayRialtorId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="PriceCompany" Type="Decimal" Precision="14" Scale="2" />
+    <Property Name="NamePayClient" Type="String" MaxLength="253" FixedLength="false" Unicode="true" />
+    <Property Name="NameBuyClient" Type="String" MaxLength="253" FixedLength="false" Unicode="true" />
+    <Property Name="NamePayRealtor" Type="String" MaxLength="152" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NamBuyRealtor" Type="String" MaxLength="152" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientShare" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="BuyRieltorShare" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="PayRieltorShare" Type="Decimal" Precision="13" Scale="2" />
   </EntityType>
   <EntityType Name="ListUsers">
     <Key>
@@ -223,6 +264,7 @@
       <PropertyRef Name="UserId" />
       <PropertyRef Name="RoleId" />
     </Key>
+    <Property Name="DeletedBy" Type="Int32" />
     <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -509,6 +551,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_User_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User1" Type="Self.User" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="eSoftEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Apartmens" EntityType="Self.Apartmens" />
     <EntitySet Name="City" EntityType="Self.City" />
@@ -526,6 +580,7 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="TypeObjectNmobles" EntityType="Self.TypeObjectNmobles" />
     <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="Analizis" EntityType="Self.Analizis" />
     <EntitySet Name="ListUsers" EntityType="Self.ListUsers" />
     <AssociationSet Name="FK_Land_ObjectNmobles" Association="Self.FK_Land_ObjectNmobles">
       <End Role="ObjectNmobles" EntitySet="ObjectNmobles" />
@@ -618,6 +673,10 @@
     <AssociationSet Name="Supplies_FK" Association="Self.Supplies_FK">
       <End Role="User" EntitySet="User" />
       <End Role="Supplies" EntitySet="Supplies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="User1" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

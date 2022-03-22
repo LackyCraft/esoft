@@ -1,0 +1,40 @@
+﻿<Page x:Class="esoft.ShareDale"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:esoft"
+      mc:Ignorable="d"
+      Title="ShareDale">
+
+    <Grid>
+        <DataGrid x:Name="DataGridShare" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="2" HorizontalScrollBarVisibility="Visible">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Наименование недвижимости" Binding="{Binding Title}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Широта" Binding="{Binding Lng}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Долгота" Binding="{Binding Lat}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Номер дома" Binding="{Binding ObjectNmobles.AddressHouse}"/>
+
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Адрес улицы" Binding="{Binding AddressStreet}"/>
+
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Адрес дома" Binding="{Binding AddressHouse}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Квартира" Binding="{Binding AddressNumber}"/>
+
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Цена" Binding="{Binding Price}"/>
+
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Стоимость услуг компании для продаца:" Binding="{Binding PriceCompany}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Стоимость услуг компании для покупателя:" Binding="{Binding СlientShare}"/>
+
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Данные клиента покупателя:" Binding="{Binding PayClient}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Данные клиента продавца:" Binding="{Binding BuyClient}"/>
+
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Данные риэлтора покупателя:" Binding="{Binding PayRialtorId}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Данные риэлтора продавца:" Binding="{Binding BuyRealtorId}"/>
+
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Отчисление риэлтору продавцу:" Binding="{Binding BuyRieltorShare}"/>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Отчисление риэлтору покупателя:" Binding="{Binding PayRieltorShare}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
